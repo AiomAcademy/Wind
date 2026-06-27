@@ -21,6 +21,15 @@ Run it on **your** machine or VPS, against **your** exchange accounts and **your
 
 ---
 
+## Why Wind
+
+- 🔐 **Non‑custodial.** Keys are generated and encrypted **on your machine** — Wind can't touch your funds, ever.
+- 🖥️ **Self‑hosted.** Runs on your own laptop or a small VPS. Your data lives in **your** database, not someone's cloud.
+- 📊 **Honest by default.** PnL is read **straight from your exchange** — no invented numbers; the backtester shows losing strategies as losing.
+- 🧰 **A whole hub, not just a bot.** Wallets (EVM + Solana), an on‑chain DEX, a marketplace, payments and an AI copilot — integrated, and all yours.
+
+---
+
 ## 🚀 Install in one command
 
 You only need **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** (Windows / macOS / Linux).
@@ -59,6 +68,8 @@ docker stop wind                                                                
 | **🔑 Wind ACCESS** | Unlock premium apps (Chat, Pattern Trader, the snipers, the AI Assistant…) with collectible **passes** — yours to keep. |
 | **🤖 AI Trades Assistant** | A context‑aware copilot that proposes trims/closes — it never executes anything without your one‑tap approval. |
 | **💬 Wind Chat** | Channels + DMs between Wind users, hosted by the master. |
+
+Works with **BingX · Binance · Bybit · OKX · Gate · Bitget · MEXC · Kraken · Blofin · Coinbase** — and installs to your phone as a **PWA**.
 
 ---
 
