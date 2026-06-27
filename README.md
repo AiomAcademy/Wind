@@ -11,6 +11,12 @@ Run it on **your** machine or VPS, against **your** exchange accounts and **your
 ![Image](https://img.shields.io/badge/image-ghcr.io%2Faiomacademy%2Fwind--trades--hub-181717?logo=github&logoColor=white)
 [![Status](https://img.shields.io/badge/status-open%20BETA-f5c842)](#-open-beta)
 
+<br>
+
+<img src="docs/dashboard.png" alt="The Wind dashboard — equity, realized PnL, market heatmap, the trading apps and built-in chat" width="880">
+
+<sub><em>Example dashboard (testnet). Wind reads PnL straight from your exchange — results depend on your strategy and the market; Wind never promises profit.</em></sub>
+
 </div>
 
 ---
