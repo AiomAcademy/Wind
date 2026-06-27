@@ -1,0 +1,27 @@
+# Wind — self-host install (NO source code needed). Pulls the pre-built PUBLIC image from GitHub
+# Container Registry and runs it. This is the file BETA users get — the source repo stays private.
+#
+#   docker compose up -d                            # start in the background
+#   open  http://localhost:3010
+#   docker compose pull && docker compose up -d      # update to the latest release
+#   docker compose down                              # stop (your data volume is kept)
+#
+# First run needs NO exchange API key and NO capital: create a non-custodial wallet, browse the
+# marketplace, backtest. Connecting an exchange to trade live is a separate, optional step.
+
+services:
+  wind:
+    image: ghcr.io/aiomacademy/wind-trades-hub:latest
+    container_name: wind
+    pull_policy: always
+    ports:
+      - "3010:3010"
+    volumes:
+      - wind-data:/app/backend/data
+    environment:
+      - NODE_ENV=production
+      # - WIND_MASTER_URL=https://your-hub.example.com   # optional: point at a specific Wind HUB master
+    restart: unless-stopped
+
+volumes:
+  wind-data:

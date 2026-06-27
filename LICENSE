@@ -1,0 +1,42 @@
+Wind — License & Terms of Use
+Copyright (c) 2026 AiomAcademy. All rights reserved.
+
+This repository contains ONLY the materials needed to install and run Wind
+(install instructions, a Docker Compose file, and helper scripts). It does NOT
+contain Wind's source code, which is proprietary and not published.
+
+1. GRANT. You are granted a personal, non-exclusive, non-transferable license to
+   download, install and run the official pre-built Wind container image
+   (ghcr.io/aiomacademy/wind-trades-hub) on hardware you control, for your own
+   use, subject to these terms.
+
+2. RESTRICTIONS. You may not: (a) sell, sublicense, rent or redistribute the
+   Wind image or this software as your own product or service; (b) reverse
+   engineer, decompile or attempt to extract source from the image except to the
+   extent this restriction is prohibited by applicable law; (c) remove or alter
+   any Wind branding, notices, or license/access controls; (d) use Wind for any
+   unlawful purpose.
+
+3. THE SCRIPTS in this repo (docker-compose.yml, scripts/) are provided so you
+   can run Wind conveniently and may be modified for your own installation.
+
+4. NON-CUSTODIAL. Wind runs on YOUR machine with YOUR keys and YOUR exchange
+   accounts. You alone are responsible for your wallets, keys, API credentials,
+   funds and trades. Wind does not custody your funds.
+
+5. NO WARRANTY. WIND IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED, INCLUDING BUT NOT LIMITED TO MERCHANTABILITY, FITNESS FOR A
+   PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+
+6. NO FINANCIAL ADVICE / LIMITATION OF LIABILITY. Wind is software, not financial
+   advice, and is not a guarantee of profit. Trading — especially with leverage —
+   can lose some or all of your capital. To the maximum extent permitted by law,
+   in no event shall AiomAcademy be liable for any trading losses or for any
+   direct, indirect, incidental, special or consequential damages arising from
+   your use of Wind.
+
+7. BETA. Wind is provided as an open beta and may change or be discontinued at
+   any time.
+
+By installing or running Wind you agree to these terms. If you do not agree, do
+not install or run it.
