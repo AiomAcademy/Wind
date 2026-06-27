@@ -32,11 +32,10 @@ Run it on **your** machine or VPS, against **your** exchange accounts and **your
 
 ## 🚀 Install in one command
 
-You only need **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** (Windows / macOS / Linux).
+You need **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** (Windows / macOS / Linux). **Launch it first** and wait for the 🐳 whale icon to go steady — the engine must be running. Then paste this **one line** (works in `cmd`, PowerShell and bash):
 
 ```bash
-docker run -d --name wind -p 3010:3010 -v wind-data:/app/backend/data \
-  ghcr.io/aiomacademy/wind-trades-hub:latest
+docker run -d --name wind -p 3010:3010 -v wind-data:/app/backend/data ghcr.io/aiomacademy/wind-trades-hub:latest
 ```
 
 Then open **http://localhost:3010** — done.
@@ -52,8 +51,9 @@ tray icon with **Show Wind · Restart Wind · Quit Wind**.
 
 ### Update / stop later
 ```bash
-docker pull ghcr.io/aiomacademy/wind-trades-hub:latest && docker restart wind   # update
-docker stop wind                                                                # stop (data kept)
+docker pull ghcr.io/aiomacademy/wind-trades-hub:latest   # 1) fetch the latest
+docker restart wind                                       # 2) apply the update
+docker stop wind                                          # stop Wind (your data is kept)
 ```
 
 ---
