@@ -101,6 +101,8 @@ on Windows, or just `docker compose up -d` anywhere.
 Wind is in **open BETA** — free to self‑host and explore. The trading engine moves **real money** the moment
 you connect an exchange, so start on testnet / small. Premium apps unlock via **Wind ACCESS** passes.
 
+📜 **Full version history → [CHANGELOG.md](CHANGELOG.md)** — every release, newest first.
+
 ## ❓ Is the source code here?
 No. Wind ships as this **pre‑built public image** so anyone can run it; the **source stays private**. That's
 by design — what you get is the running hub, on your machine, fully under your control.
