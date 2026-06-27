@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌬️ Wind
+# 🍃 Wind
 
 ### The self‑hosted, non‑custodial crypto trading **hub**
 
