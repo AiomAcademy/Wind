@@ -1,0 +1,6 @@
+# This is Wind's public install / landing repo — not a code project.
+# Keep the helper tray scripts out of GitHub's "Languages" stats so the repo
+# reads as documentation, not a PowerShell/VBScript project.
+scripts/** linguist-documentation
+*.ps1 linguist-documentation
+*.vbs linguist-documentation
