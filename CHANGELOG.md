@@ -5,6 +5,14 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.5.8
+
+**v4.5.8 — Cleaner top bar when chat is locked.** The chat button next to the bell now **hides itself** when Wind Chat is locked (no Chat Pass / not granted), and **reappears** the moment it's unlocked — by buying the pass or an operator grant. No more dead button.
+
+_Frontend — hard-refresh after pulling the latest image._
+
+---
+
 ## v4.5.7
 
 **v4.5.7 — Super-admin can act on the fleet.** Operator actions now reach self-host instances.
