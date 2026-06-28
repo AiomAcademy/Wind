@@ -5,6 +5,17 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.5.6
+
+**v4.5.6 — Notifications settings.** A dedicated place to control what pings you.
+
+### 🔔 Notifications page
+- New **Notifications** entry in the top-right menu: toggle **browser push**, and per-kind chat notifications — **Direct messages**, **Channels**, and **Sound** — with a test-sound button. Chat now plays a ping when a new message arrives (honoring these toggles). Saved on your device.
+
+_Frontend — hard-refresh after pulling the latest image._
+
+---
+
 ## v4.5.5
 
 **v4.5.5 — Zero-config federation (BETA).** Fresh installs now join the shared marketplace + chat automatically.
