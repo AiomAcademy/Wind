@@ -5,6 +5,18 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.5.2
+
+**v4.5.2 — Wind is free.** The base dashboard and the trading engine no longer require a "Wind HUB license" — self-host and trade for free. The only paid layer now is the **Wind ACCESS passes** for the bonus apps.
+
+### 🆓 Free to self-host
+- Removed the HUB-license gate from the dashboard **and** from starting the bot. No subscription, no Whop prompt — just run it and create your account.
+- The bonus apps (Pattern Trader, the Detectors, the Snipers, the AI Trades Assistant, Chat…) stay unlocked **individually** with Wind ACCESS passes — buy the pass for the one you want.
+
+_Effective after pulling the latest image._
+
+---
+
 ## v4.5.1
 
 **v4.5.1 — Self-host boot fix.** The published Docker image now boots correctly on a fresh self-host machine.
