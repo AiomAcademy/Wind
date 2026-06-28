@@ -5,6 +5,18 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.5.7
+
+**v4.5.7 — Super-admin can act on the fleet.** Operator actions now reach self-host instances.
+
+### 🛰️ Remote control (pull channel)
+- Ban / grant a Wind ACCESS feature / set a license on a client from the **Super Admin** console — the client **pulls and applies it on its next check-in** (≤10 min). A banned instance locks; a granted bonus app unlocks. Before, these actions only touched the master's own record.
+- Fixed a footgun: granting a client's ACCESS no longer flips the **master's** own access by mistake — grants are now stored **per client**.
+
+_Master + clients: effective after both pull the latest image and restart._
+
+---
+
 ## v4.5.6
 
 **v4.5.6 — Notifications settings.** A dedicated place to control what pings you.
