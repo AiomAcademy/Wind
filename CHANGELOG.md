@@ -5,6 +5,17 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.5.1
+
+**v4.5.1 — Self-host boot fix.** The published Docker image now boots correctly on a fresh self-host machine.
+
+### 🐛 Critical fix
+- A client (non-master) instance crashed immediately at startup — a config value was read before the config service had finished initializing — so the image exited the moment you ran it on a brand-new machine. The BETA check-in beacon now initializes **lazily**, after services are ready. Master instances were never affected (they skip that code).
+
+_Effective after pulling the latest image: pull the new image, then restart your Wind container._
+
+---
+
 ## v4.5.0
 
 **v4.5.0 — Open BETA self-host: install Wind in one command, run it from a Windows tray, and a hardened payment path.** Wind is now something anyone can stand up on their own machine from a public image — the trading engine itself is unchanged.
