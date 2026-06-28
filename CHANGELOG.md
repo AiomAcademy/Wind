@@ -5,6 +5,18 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.5.3
+
+**v4.5.3 — Self-host polish.** Small fixes spotted on the first real self-host installs.
+
+### ✨ Fixes
+- The Marketplace no longer shows a scary "server not enabled" error on a self-host instance — it just shows the available ACCESS passes and listings.
+- Centered the step icons in the onboarding wizard.
+
+_Effective after pulling the latest image._
+
+---
+
 ## v4.5.2
 
 **v4.5.2 — Wind is free.** The base dashboard and the trading engine no longer require a "Wind HUB license" — self-host and trade for free. The only paid layer now is the **Wind ACCESS passes** for the bonus apps.
