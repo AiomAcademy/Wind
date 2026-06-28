@@ -32,13 +32,13 @@ Run it on **your** machine or VPS, against **your** exchange accounts and **your
 
 ## 🚀 Install in one command
 
-You need **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** (Windows / macOS / Linux). **Launch it first** and wait for the 🐳 whale icon to go steady — the engine must be running. Then paste this **one line** (works in `cmd`, PowerShell and bash):
+You need **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** (Windows / macOS / Linux). **Launch it first** and wait for the 🐳 whale icon to go steady — the engine must be running. *(On a fresh Windows PC the first launch may set up WSL2 and ask you to restart — that's normal.)* Then paste this **one line** (works in `cmd`, PowerShell and bash):
 
 ```bash
 docker run -d --name wind -p 3010:3010 -v wind-data:/app/backend/data ghcr.io/aiomacademy/wind-trades-hub:latest
 ```
 
-Then open **http://localhost:3010** — done.
+Then open **http://localhost:3010** and **create your account** — that's the single admin login for your instance. You're in.
 
 > **No exchange API key and no capital needed on first run.** Create a non‑custodial wallet, browse the
 > marketplace, and backtest a strategy. Connecting an exchange to **trade live** is a separate, optional
