@@ -5,6 +5,17 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.5.5
+
+**v4.5.5 — Zero-config federation (BETA).** Fresh installs now join the shared marketplace + chat automatically.
+
+### 🌐 Auto-connect
+- A new self-host instance now defaults to the public Wind master, so the marketplace catalog and chat are shared across every host the moment you install — with just the one install command, no setup.
+
+_Effective after pulling the latest image._
+
+---
+
 ## v4.5.4
 
 **v4.5.4 — Decentralized marketplace.** Every self-host can now LIST into the shared marketplace — not just browse and buy it.
