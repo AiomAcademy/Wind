@@ -5,6 +5,18 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.5.4
+
+**v4.5.4 — Decentralized marketplace.** Every self-host can now LIST into the shared marketplace — not just browse and buy it.
+
+### 🌐 List from any host
+- When you list a strategy, NFT, item or pack, it's now published to the Wind master's shared catalog, so **every other host sees it** (before, listings stayed on your own instance). Buyers pay **your** wallet directly on-chain — Wind custodies nothing.
+- Community listings are marked **Community / unverified**; a paid listing must include a payout wallet.
+
+_Needs a reachable Wind master (the shared marketplace host). Effective after pulling the latest image._
+
+---
+
 ## v4.5.3
 
 **v4.5.3 — Self-host polish.** Small fixes spotted on the first real self-host installs.
