@@ -5,6 +5,20 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.5.9
+
+**v4.5.9 — Super Admin panel, accurate & faster.** The operator console now reflects the real state of remote clients.
+
+### 🛰️ Fleet control
+- The **Wind ACCESS** menu shows what's **actually granted** per client (it was always blank before), with a count badge on the ⚡ button.
+- **Grants & bans apply within ~60s** now (the client check-in interval, down from 10 min).
+- **Ping** & the live **drill-down** are correctly limited to **managed** instances — self-host is anonymous + check-in only, so no more misleading "offline".
+- Clearer footer note explaining what reaches self-host vs managed.
+
+_Master + clients: re-pull the latest image and restart._
+
+---
+
 ## v4.5.8
 
 **v4.5.8 — Cleaner top bar when chat is locked.** The chat button next to the bell now **hides itself** when Wind Chat is locked (no Chat Pass / not granted), and **reappears** the moment it's unlocked — by buying the pass or an operator grant. No more dead button.
