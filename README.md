@@ -49,12 +49,24 @@ Prefer not to touch a command line? Download the **[install bundle](#-the-instal
 `docker-compose.yml` + the `scripts/windows/` folder), then **double‑click `wind-tray.vbs`**. You get a
 tray icon with **Show Wind · Restart Wind · Quit Wind**.
 
-### Update / stop later
+### Update to the latest version
+> **Your data is always safe** — it lives in the `wind-data` volume, not inside the container, so it
+> survives a full remove. `docker restart` is **not** enough: it re‑runs the **old** image. To actually
+> update you remove the container and re‑create it from the freshly pulled image:
 ```bash
-docker pull ghcr.io/aiomacademy/wind-trades-hub:latest   # 1) fetch the latest
-docker restart wind                                       # 2) apply the update
-docker stop wind                                          # stop Wind (your data is kept)
+docker pull ghcr.io/aiomacademy/wind-trades-hub:latest   # 1) fetch the latest image
+docker rm -f wind                                        # 2) remove the old container (data is kept)
+docker run -d --name wind -p 3010:3010 -v wind-data:/app/backend/data ghcr.io/aiomacademy/wind-trades-hub:latest   # 3) start on the new image
 ```
+
+### Stop / start / reset
+```bash
+docker stop wind     # stop Wind   (data kept)
+docker start wind    # start again (data kept)
+docker rm -f wind    # remove the container only — re‑run the install command to recreate it (data kept)
+```
+> **Full wipe (start over):** run `docker rm -f wind` then `docker volume rm wind-data` — this **deletes
+> your database, wallets and settings** permanently. Only do this if you want a clean slate.
 
 ---
 
