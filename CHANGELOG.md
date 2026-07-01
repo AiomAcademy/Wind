@@ -5,6 +5,21 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.8.4
+
+**v4.8.4 — A roadmap that makes you want to stay.**
+
+### 🗺️ $WINDH roadmap, reloaded
+- The whitepaper roadmap (in-app + site) now runs **nine phases** with punchier storytelling — ending on a golden **Phase 9 · 🏁 Go-live: stable production**: the whole hub cruising on mainnet $WINDH.
+- New **"Beyond — where Wind is heading"** vision track: 💳 **Wind Card** (a card linked to your Wind Wallet — virtual cards, Apple Pay / Google Pay), 📱 **Wind on the stores** (native App Store + Google Play release) and 💎 **Wind Earn** (staking vaults + $WINDH cashback).
+
+### ✨ Site polish
+- The "how it works" section is now titled **Auto-Trading, live in three steps** — because that's what it is.
+
+_Frontend — hard-refresh after pulling the latest image._
+
+---
+
 ## v4.8.3
 
 **v4.8.3 — Encrypted chat lock + a public face.**
