@@ -5,6 +5,96 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.8.3
+
+**v4.8.3 — Encrypted chat lock + a public face.**
+
+### 🔐 Encrypted chat — passcode on the dock
+- Open the Messaging dock and it now greets you with a styled **Encrypted chat** panel: pick a **4-digit passcode** (like X Chat) and the dock stays locked on this device — asked once per browser session.
+- The passcode is a **local privacy lock** (hashed on your machine, never sent anywhere); messages already travel encrypted over TLS. Forgot it? Reset from the lock screen. Add or remove it anytime via the 🔒 button next to the chat search.
+
+### 🌐 Site, docs & whitepaper
+- The public site now leads with **"Trading is free."** + an ACCESS-pass carousel, a standalone **$WINDH Whitepaper** page (orbital coin, live-derived roadmap), Discord + X links everywhere, and an **Install Wind** guide in the docs.
+- Docs polish: patch notes auto-sort newest-first (no more "More" bucket), markdown links render in-app, the $WINDH / AI Assistant marks use the **Wind logo**, and every emoji now renders on Windows 10.
+- Positioning: **Wind Wallets is its own pillar** — eight pillars, with Catalyst DEX focused on buy & swap from your Wind wallet or connected exchange.
+
+_Frontend — hard-refresh after pulling the latest image._
+
+---
+
+## v4.8.2
+
+**v4.8.2 — Strategy presets that track the master.**
+
+### 🎚️ Safe = what the master runs
+- The onboarding risk profiles and the new **Conservative · Safe · Aggro** picker in Advanced Config now derive from the **master's live strategy config**. Safe is exactly what the master runs right now; Conservative scales it down; Aggro scales it up. Change the master's config and every client's presets follow.
+- Presets only touch strategy/risk settings — they never overwrite your exchange, trading pairs or testnet/live mode.
+
+_Frontend — hard-refresh; the preset endpoints take effect after a restart._
+
+---
+
+## v4.8.1
+
+**v4.8.1 — Chat tidy-up.** Reverted the experimental DM "chat-head" chips beside the Messaging panel — your direct messages live in the Messaging list as before. The other chat improvements stay: the composer **auto-focuses** when you open a DM, long messages **wrap** (no sideways scroll), and opening a chat **keeps the Messaging panel open**.
+
+_Frontend — hard-refresh after pulling the latest image._
+
+---
+
+## v4.8.0
+
+**v4.8.0 — Wind is fully free: the license system is gone.**
+
+### 🆓 No more licenses
+- Trading is **free** — the entire license system (the status chip, the Super Admin license column + grant, the old Whop/subscription lock, the $WINDH license checkout) has been removed. The **only** paid layer is the **Wind ACCESS passes** for the bonus apps, bought with SOL.
+
+### 💬 Chat
+- Open a DM and the cursor lands **straight in the message box** — no more double-click to start typing.
+- **No more sideways scroll** in chat — long links and wallet addresses wrap instead of overflowing.
+- Opening a chat **no longer collapses** the Messaging panel.
+- **DM chat-heads**: recent direct messages show as one-click chips beside Messaging, with an unread badge — your conversations stay one tap away.
+
+### 🏠 Onboarding
+- After a full reset + redeploy, you now correctly land on the **create-account / first-run** screen instead of a stale profile from the browser.
+
+_Frontend — hard-refresh after pulling the latest image. The license + onboarding changes take effect after a restart._
+
+---
+
+## v4.7.0
+
+**v4.7.0 — Unlock apps with SOL, plus a cleaner dashboard & chat.**
+
+### 🔓 Unlock passes by paying in SOL
+- Hitting a locked app now opens a **Pay in SOL** popup: send SOL to the academy wallet, paste your transaction id, and Wind **verifies it on-chain** and unlocks the app with a celebratory animation.
+- The amount is shown live (USD → SOL at the current rate) and the payment goes **straight to the wallet** — Wind never holds your funds. Each transaction unlocks once.
+
+### 🏠 Dashboard
+- No more endless "Calculating…": the KPI cards settle on their real value (or a dash) once data loads, and a clear banner tells you when **no exchange is connected** so the blanks make sense.
+
+### 💬 Chat
+- Slightly **larger message text** for readability, and each sender's **name now carries a gradient** matched to their avatar colour.
+
+_Frontend — hard-refresh after pulling the latest image. The SOL unlock + on-chain verification take effect after a restart._
+
+---
+
+## v4.6.0
+
+**v4.6.0 — Know who's who in your fleet.** The Super Admin client list now shows each instance by its **owner's chosen name** instead of a generic "BETA instance".
+
+### 🛰️ Fleet control
+- Each self-host client reports its **admin account name** (the one created at first run) — shown in the client row, the license prompt and the delete confirm.
+- New **platform chips** per row (🐧 linux · 🖥️ win32 · 🍎 macOS) + version, so Docker vs native instances are obvious at a glance.
+- The **⚡ ACCESS count badge refreshes instantly** after a grant — no manual reload.
+
+_The owner name is already shared with the master through Wind Chat, so the beacon discloses nothing new; opt out with betaBeaconDisabled._
+
+_Master + clients: re-pull the latest image and restart._
+
+---
+
 ## v4.5.9
 
 **v4.5.9 — Super Admin panel, accurate & faster.** The operator console now reflects the real state of remote clients.
@@ -115,7 +205,7 @@ _Effective after pulling the latest image: pull the new image, then restart your
 ### 📦 One-command self-host
 - Wind ships as a **pre-built public image**: `docker run … ghcr.io/aiomacademy/wind-trades-hub:latest`, then open http://localhost:3010 — no source checkout, no build step. First run needs **no exchange key and no capital**.
 
-### 🪟 Windows — no terminal
+### 🖱️ Windows — no terminal
 - A new **system-tray controller** (Show Wind · Restart Wind · Quit Wind) runs the whole stack in the background. Double-click to start; drop it in Startup to launch with Windows.
 
 ### 🛰️ Fleet visibility (super-admin)
@@ -232,7 +322,7 @@ _Most of this is frontend (hard-refresh). The access gating, the Wind ACCESS see
 
 **v4.0.0 — $WINDH on Solana, a wallet that holds it, and an assistant that remembers you.** The Wind HUB token ($WINDH) arrives on Solana — the most active, lowest-fee chain — with a custodial Solana account built right into your Wind wallet, $WINDH checkout in the Marketplace, and an AI Trades Assistant that finally keeps your conversation history. Plus a broad design pass and far quieter logs.
 
-### 🪙 $WINDH — the Wind HUB token (Solana)
+### ![Wind](/wind-logo.svg) $WINDH — the Wind HUB token (Solana)
 - **$WINDH launches on Solana** (SPL), chosen for the most active community and near-zero fees. A full tokenomics spec ships with it: fixed 100M supply, mint & freeze authorities revoked, with utility across licenses, the marketplace, staking and governance.
 - Devnet mint tooling is included so the token can be created and tested safely before mainnet.
 
@@ -396,7 +486,7 @@ _Money-path: unchanged. The only engine-adjacent change is additive notification
 - The Whales radar now **auto-starts at boot**, even before trading is started, and runs on a **separate price feed** (public exchange tickers) so it never eats your trading rate-limits — fixing the stale-price bug that froze ETH/BTC at fallback values.
 - Token Sniper is a **scan-only** scanner (no auto-buy); spotted tokens get a **Trade** button, just like Patterns Trader.
 
-### 🪵 Logs page + long-term archive
+### 🗒️ Logs page + long-term archive
 - The Logs page is fully redesigned (live feed, severity colors, stat chips), and Wind now **archives logs to daily files** (`data-master/logs-archive/`) with rotation — so you can analyze the bot's behavior over weeks, not just the live buffer.
 
 ### 📊 Reports & Risk
