@@ -13,9 +13,9 @@ Run it on **your** machine or VPS, against **your** exchange accounts and **your
 
 <br>
 
-<img src="docs/dashboard.png" alt="The Wind dashboard — equity, realized PnL, market heatmap, the trading apps and built-in chat" width="880">
+<img src="docs/banner.png" alt="Wind — welcome to the community. Self-hosted · non-custodial · your keys, your funds." width="880">
 
-<sub><em>Example dashboard (testnet). Wind reads PnL straight from your exchange — results depend on your strategy and the market; Wind never promises profit.</em></sub>
+<sub><em>Self-hosted · non-custodial · your keys, your funds. Results depend on your strategy and the market; Wind never promises profit.</em></sub>
 
 </div>
 

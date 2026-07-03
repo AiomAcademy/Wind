@@ -5,6 +5,19 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.8.5
+
+**v4.8.5 — The site gets its aura.**
+
+### 🌌 Site & docs polish
+- A subtle **purple aurora backdrop** now breathes behind every page of the public site (home, whitepaper, wiki, patch notes).
+- Tighter hero pitch — every core strategy included, an **NFT, strategies & items marketplace** — and the **Whitepaper** joined the footer.
+- The public GitHub page opens on the **Wind community banner**, and the roadmap's **Wind Wallet** phase wears the Wind logo (site + in-app).
+
+_Frontend + site only — hard-refresh after pulling the latest image._
+
+---
+
 ## v4.8.4
 
 **v4.8.4 — A roadmap that makes you want to stay.**
@@ -14,7 +27,7 @@ see inside Wind, so this never drifts from the product.
 - New **"Beyond — where Wind is heading"** vision track: 💳 **Wind Card** (a card linked to your Wind Wallet — virtual cards, Apple Pay / Google Pay), 📱 **Wind on the stores** (native App Store + Google Play release) and 💎 **Wind Earn** (staking vaults + $WINDH cashback).
 
 ### ✨ Site polish
-- The "how it works" section is now titled **Auto-Trading, live in three steps** — because that's what it is.
+- The old three-step "how it works" block is retired — the new **Deploy** menu entry drops you straight on **"Trading is free."**, the pass carousel and the one-command install.
 
 _Frontend — hard-refresh after pulling the latest image._
 
