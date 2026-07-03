@@ -5,6 +5,23 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.8.7
+
+**v4.8.7 — Never lose your instance.**
+
+### 💾 Encrypted backup & restore
+- New **Settings → Backup & Restore**: download a single **encrypted file** (AES-256 under your passphrase) that holds your whole instance — wallets, exchange keys, history, passes. Store it OFF the box.
+- Restore it on any Wind instance — or straight from the **create-account screen** on a fresh install (disk died → new install → restore → restart). Applies at the next restart; your current data is kept as a `.pre-restore` copy. Without the passphrase the file is useless.
+
+### ⬆️ Update nudges & polish
+- The dashboard now shows an **"update available"** banner when the master is on a newer release, with a one-tap copy of the update command.
+- The **Encrypted chat** passcode now also locks the mobile `/chat` page (not just the desktop dock).
+- Link previews: shares of the Wind site on X / Discord now carry the community banner.
+
+_Frontend — hard-refresh; backup restore takes effect at restart._
+
+---
+
 ## v4.8.6
 
 **v4.8.6 — Site revision pass.**
