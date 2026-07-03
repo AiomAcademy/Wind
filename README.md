@@ -9,6 +9,7 @@ Run it on **your** machine or VPS, against **your** exchange accounts and **your
 
 [![Install](https://img.shields.io/badge/install-docker%20run-2496ED?logo=docker&logoColor=white)](#-install-in-one-command)
 ![Image](https://img.shields.io/badge/image-ghcr.io%2Faiomacademy%2Fwind--trades--hub-181717?logo=github&logoColor=white)
+[![Version](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FAiomAcademy%2FWind%2Fmain%2Fversion.json&logoColor=white)](CHANGELOG.md)
 [![Status](https://img.shields.io/badge/status-open%20BETA-f5c842)](#-open-beta)
 
 <br>
