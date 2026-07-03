@@ -5,6 +5,27 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.8.8
+
+**v4.8.8 — Support tickets, one-click verify, a passcode that works everywhere.**
+
+### 🎫 Discord: tickets & verification
+- The community server got a real **support-ticket system**: hit the 🎫 button in #open-ticket and a **private channel** opens for you and the team — close it any time with 🔒. One open ticket per member.
+- **One-click verification** in #verify-discord: the ✅ button grants the verified role and opens up the whole server.
+- Zero extra infrastructure: the Wind master itself answers Discord's buttons (signature-verified HTTP interactions) — no third-party ticket bot to trust.
+
+### 🔁 Reverse policy in the presets
+- Default reverse policy now mirrors the live baseline: positions reverse **only after a John Wick pullback close** (confluence-gated). The extra stop-loss / opposite-signal reverse modes stay OFF by default — they over-trade in chop.
+- The **🔥 Aggressive preset** flips the whole reverse family ON — reverse on stop loss, on opposite signal, with the quantity multiplier applied. Pick your poison from the preset picker.
+
+### 🔐 Encrypted chat — lock fixes
+- The chat passcode now works over plain **http** (LAN or VPS IP access): fixed the setup panel freezing after confirmation and the dreaded "Wrong passcode" with the correct code — hashing now falls back when the browser hides its secure-context crypto.
+- Private-browsing sessions no longer loop the setup panel, and the mobile chat page no longer flashes the full chat while the pass check loads.
+
+_Frontend — hard-refresh; backend (presets + Discord endpoint) at reboot._
+
+---
+
 ## v4.8.7
 
 **v4.8.7 — Never lose your instance.**
