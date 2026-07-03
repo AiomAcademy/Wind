@@ -5,6 +5,18 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.8.6
+
+**v4.8.6 — Site revision pass.**
+
+### 📱 Mobile polish (public site)
+- Fixed a lateral-scroll regression on phones: the footer link row now wraps and the nav social chips step aside on small screens — every page sits flush at 375px again.
+- The footer **Contact** link now opens the **Wind Discord** (it pointed at a placeholder address).
+
+_Site-only release — nothing changes inside the app; self-hosters can skip this one._
+
+---
+
 ## v4.8.5
 
 **v4.8.5 — The site gets its aura.**
