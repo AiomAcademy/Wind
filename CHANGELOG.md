@@ -5,6 +5,26 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v4.8.9
+
+**v4.8.9 — The storefront grows teeth: a live Marketplace page, the Wind Pay coin, and conversion everywhere.**
+
+### 🛒 Marketplace on the website — live-synced
+- The public site gained a full **Marketplace page** (nav: The Hub → Marketplace) that syncs **in real time with the master node**: real listings, stats, ratings, tiers — plus a catalog preview so the shelves never look empty. Category chips, live search, ACCESS passes first.
+- Cards carry the **real artwork**: the ACCESS pass trading-cards shown whole, bespoke equity-curve graphics for the seed strategies, category badges and Wind-logo avatars for official sellers.
+- **Conversion popups**: tapping any listing — on the Marketplace page or the home pass carousel — opens an install pitch with the one-command docker line, copy button and community links.
+
+### ![Wind Pay](/windpay-coin.svg) Wind Pay has a face
+- A **retro gold coin** (the Wind W embossed) now marks Wind Pay across the app and the site — Whitepaper utility card, Wiki, the marketplace pay button, hero lines and prices.
+
+### 🎛️ Presets & polish
+- **Net-directional cap defaults**: 65% on Safe/Balanced (was 70) — the **Aggressive preset disables it** for fully one-directional books.
+- Pattern Trader, Patterns Detector and Chat wear the **Home-depth dark surfaces**; docs mobile search shows tap-able results; the site FAQ lists the real **10 exchange connectors**.
+
+_Frontend + site — hard-refresh; preset defaults at reboot._
+
+---
+
 ## v4.8.8
 
 **v4.8.8 — Support tickets, one-click verify, a passcode that works everywhere.**
