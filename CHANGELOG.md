@@ -5,6 +5,65 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.0.0
+
+**v5.0.0 — The community era: 10,000 traders move in, a guided tour for everyone, and one-tap sniping from your own wallet.**
+
+### 🏠 The Wind HUB Community — 10,000 strong
+- Wind's Discord home is now the reclaimed community server — **~10,000 members** — rebuilt end-to-end by the Wind bot: full channel structure, roles, panels, 72 informational embeds and the complete patch-notes history, with **nothing deleted** (the old era is archived, and the historic announcements feed keeps its years of history for continuity).
+- **Pick your pings**: a new self-service roles channel — tap a button to toggle 📜 Patchnotes, 🍃 Wind Live Trades, 📢 Announcements or 🎁 Events & Giveaways. No spam, your choice, one tap off.
+- Support tickets, one-click verify and the live-trades mirror all moved in; install guides and the server's "What is Wind?" got a breathing-room rewrite. New permanent invite: **discord.gg/qZfaTyndgv** — wired across the site and the app.
+
+### ⚡ Token Sniper — 1-click Buy from your Wind wallet
+- Every fresh detection now has a **Buy button**: pick a wallet, an amount in the chain's native coin, confirm — done. Quotes are live, and the route is chosen for you: brand-new **V2 pools** (most fresh launches, all of BSC) go through the fee-on-transfer-safe V2 routers, **V3 pools** through the proven swap path.
+- **Safety first, server-side**: tokens whose scan says honeypot or danger are refused by the backend itself — the button is dead in the UI and the API says no. Buys are scoped to actually-detected tokens, minimum-received absorbs the token's buy tax, and it is **always you clicking** — the sniper still never buys on its own.
+- BSC detections finally get working **Trade and chart links** (PancakeSwap + Dexscreener).
+
+### 👁️ Preview account — look around, touch nothing
+- A **read-only demo login** for the curious: browse the whole dashboard while every action is politely refused — a top-right notice explains why, a permanent badge says you're in preview, and the refusal is enforced **server-side**, not just hidden buttons.
+
+### 🔭 Super Admin — the eye sees everything now
+- The Live Overview drill-down works on **every** client row: managed instances stream the full live payload (positions, trades, balance, risk, version, uptime), self-host instances show everything the anonymous beacon reports — plus a raw-payload view so nothing is ever silently dropped.
+
+### 🖼️ Brand pass
+- The hand-drawn arrows came off the banner kit for a cleaner look, and the site's **link preview now shows the app itself** — two phones running the real dashboard with the master's real numbers.
+- The join log now paginates the full member list, so new arrivals are spotted even on a 10,000-member server.
+
+_Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh._
+
+---
+
+## v4.9.0
+
+**v4.9.0 — The assistant learns the market, the sniper learns the truth, and the bot cleans its own house.**
+
+### 🤖 AI Assistant — Wind-native market intelligence
+- The assistant now runs its own **pattern scanner**, computes **real support/resistance levels**, reads **whale signals** and your live performance — answers are grounded in your actual data, not vibes.
+- **Market overview works on all 10 exchanges**: every connector (Binance, BingX, Bitget, Blofin, Bybit, Coinbase, Gate, Kraken, MEXC, OKX) now serves the full 24h ticker board in one normalized call — "top movers?" answers no longer need BingX specifically.
+- **Claude Sonnet 5** joins the model menu — near-Opus answers at a fraction of the price.
+
+### 🛡️ Token Sniper — honest numbers, real scanning
+- **Real safety scanning**: GoPlus honeypot / buy-sell tax / LP-lock scoring on every detected token, with a labelled on-chain fallback when GoPlus has nothing yet.
+- Fixed the **quadrillion-dollar pools**: BEP-20 USDT/USDC on BSC carry 18 decimals (not 6) — liquidity math is now exact on every chain, and the bogus history rows scrub themselves at start.
+- A minutes-old token with an **empty GoPlus record no longer scores 100/SAFE** — no data means on-chain checks, never a green light.
+
+### 🗜️ The database cleans its own house
+- Daily backups switched to **compacted, verified snapshots**: the copy holds only live data (a 2.2GB bloated file yields a ~178MB backup), passes an integrity check before it counts, and trading never pauses.
+- **Boot-time compaction**: an instance whose database is mostly dead space reclaims it once at startup — no more files stuck at their high-water mark forever.
+
+### 📣 Discord — mirrors & identity
+- **Multiple webhooks** for notifications (comma-separated): the first gets the role ping, the rest mirror every alert — perfect for a public live-trades channel.
+- Notifications now wear the **Wind Trades name and logo** instead of the webhook's default identity; new-member joins log to the moderators' channel.
+
+### 🔒 Hardening pass
+- The master now boots with the **ghost-admin backdoor dead** and super-admin tied to your own account; secrets can't leak through the API, key checks are constant-time, Discord interactions are replay- and guild-guarded.
+- Site & docs **honesty pass**: corrected claims, real testimonials, XSS/price/SEO fixes — plus a release guard that fails loudly instead of shipping silently broken pages.
+- Frontend robustness: no stuck spinners, honest copy-to-clipboard states, live Catalyst feed, and no background polling behind locked pages.
+
+_Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh._
+
+---
+
 ## v4.8.9
 
 **v4.8.9 — The storefront grows teeth: a live Marketplace page, the Wind Pay coin, and conversion everywhere.**
