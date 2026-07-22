@@ -5,6 +5,35 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.1.0
+
+**v5.1.0 — The server runs itself: a 17-command mega-bot, scheduled community pulses, and a daily performance report.**
+
+### 🤖 The Wind mega-bot — 17 slash commands
+- **For everyone**: /wind (what is Wind + buttons), /install (the one-command + guides), /invite, /token ($WINDH at a glance), /stats (live equity, PnL and positions straight from the master), /verify (one-tap account verify), /roles, and **/invites — the invite leaderboard** (top recruiters with joins & links, or any member's detail).
+- **Admin-only** (hidden from members AND double-checked server-side): /antispam, /announce (embed + choice of ping to any channel), /purge, /slowmode, /lock & /unlock (clean permission-bit merges, never a blunt overwrite), /ctapost, /report24h, and /cleaninvites (sweep 0-use links, or every link of a member — the official invite is protected by code).
+- Same zero-settings HTTP-interactions architecture as the ticket system — no gateway, every command answers privately, nothing spams the channels.
+
+### 🛡️ Anti-spam — enforced by Discord itself
+- **/antispam on** arms three AutoMod rules: generic spam blocked, mention floods (6+) blocked with a **10-minute timeout** and raid protection, slurs blocked — with alerts into the moderators' channel.
+- Discord allows one rule per trigger type, so the bot **adopts** any pre-existing rule instead of failing — old academy leftovers become Wind rules in place.
+- Because AutoMod runs inside Discord, protection stays live even if the master is down.
+
+### 📣 Community pulses & the daily report
+- The **community CTA broadcaster** posts twice a day (rotating designs, alternating pings) with the refreshed welcome banner — and its Install button now lands newcomers in the install channel, keeping them inside the server.
+- A **daily 24h performance report** ships every evening with a real PnL chart built from the canonical numbers — pinging only members who opted into the Live Trades role.
+
+### 💠 $WINDH — the launch machine starts
+- **TGE date is public: January 5, 2027** — stamped on the whitepaper roadmap (Phase 8).
+- The token logo is now hosted on the site, /token answers with full media, and a **submission kit covering 38 verified calendar & listing sites** (TGE calendars, airdrop directories, Solana ecosystem) is ready with copy-paste answers.
+
+### 📜 Release announces, polished
+- Patch-note announces now carry a **version chip on the banner**, a version line above the embed, an opt-in Patchnotes ping, and per-release image cache-busting — no more stale arrows from Discord's CDN.
+
+_Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh._
+
+---
+
 ## v5.0.0
 
 **v5.0.0 — The community era: 10,000 traders move in, a guided tour for everyone, and one-tap sniping from your own wallet.**
