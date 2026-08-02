@@ -5,6 +5,33 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.2.0
+
+**v5.2.0 — The Degen Trader engine, the Flyer.ai detection firehose, the World Monitor bonus app — and a hardened core after a full security audit.**
+
+### 🎲 Degen Trader — the fifth engine
+- A brand-new engine that hunts hyper-volatile movers across the **whole exchange** — no fixed watchlist. It pulls the 24h board, keeps only liquid symbols (24h volume floor), ranks the top movers and scores each one with a **Degen Score (0–100)** built from momentum, volatility burst and volume spike — with a chart-pattern confluence bonus from the Pattern Trader detector.
+- **Longs AND shorts trigger** (shorts can be display-only with one toggle). Auto-trade opens positions through the **exact same execution + safety path as Pattern Trader**: risk gate, no double entry, per-symbol cooldown and a hard cap on concurrent degen positions.
+- Its own dashboard page with the live radar, and its own **Degen Trader Pass** in Wind ACCESS.
+
+### ✈️ Flyer.ai — the detection firehose
+- The Discord flyer channel is reborn: Flyer.ai now scans **multiple markets** and posts detection flyers as rendered images — crash-proof headless rendering that survives full-auto bursts, with its own status monitor.
+
+### 🌍 World Monitor — the bonus app
+- A full-screen live world monitor (maps, conflicts, OSINT news, macro context) embedded in the dashboard — running as its **own self-hosted process** beside your instance, unlocked with the World Monitor Pass. Full open-source credits in its Wiki section.
+
+### 🛡️ Hardened after a full audit
+- Wind went through a deep multi-agent security audit. The non-money-path findings are fixed in this release, headlined by: the **shared dev admin account is gone** (it now requires an explicit opt-in env variable pair — nothing hardcoded anymore), and the **live WebSocket now requires your login token** and refuses cross-origin handshakes.
+- Config profiles and the config API no longer expose or store sensitive secrets, private DMs on the federated public chat are closed until identities can be proven, and a stack of frontend fixes landed (accurate error states, toast fixes, restored accent colors).
+- **Binance trading is fixed** — a scoping bug made every private POST request fail (orders, leverage, margin type); signed requests now carry the body correctly, locked in by unit tests.
+
+### 🧠 The master can't eat the server anymore
+- Root-cause fix for a memory runaway: Whale Discovery scan cycles can no longer stack on slow chains (re-entrancy guards), log collection per catch-up cycle is capped, startup recovery is bounded, all discovery caches have FIFO caps, and old terminal orders are purged. All launchers now cap the Node heap — a future leak aborts the bot instead of freezing the machine.
+
+_Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
 ## v5.1.0
 
 **v5.1.0 — The server runs itself: a 17-command mega-bot, scheduled community pulses, and a daily performance report.**
