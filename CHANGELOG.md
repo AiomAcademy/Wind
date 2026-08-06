@@ -5,6 +5,34 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.3.0
+
+**v5.3.0 — Catalyst swaps work on every chain again, sniped tokens can finally be sold, and your wallet keys get real encryption.**
+
+### ⚡ Catalyst — three chains were quietly broken
+- Swapping on **Base, BSC and Avalanche** always answered *"No liquidity found for this pair"* — on pairs holding millions in liquidity. Wind was asking those chains' price quoter a question in the wrong dialect: they run a newer quoter than Ethereum does, so every single price request was rejected. Quotes and swaps work on all 7 chains again.
+- **Avalanche could never swap at all** — its router address carried one extra character. Nothing was ever at risk, since the transaction could not even be built, but the failure surfaced as *"Token approval failed"* and pointed at entirely the wrong thing.
+- BSC now quotes PancakeSwap's **0.25% pools**, which Wind never looked at — so you get the genuine best price, not the best among the tiers it happened to check.
+- When a quote does fail, Wind now tells you **which** thing failed: no pool for this pair, or the price service not answering. Those used to look identical, and both blamed liquidity.
+
+### 🎯 Token Sniper — an exit, at last
+- You can now **sell a sniped position from Wind**, along the exact reverse of the buy route, fee-on-transfer safe.
+- **Honeypots are called by name.** When a token's contract refuses to let go — buys work, sells never do — Wind says so, instead of suggesting you raise slippage: advice that could never have worked on a token that will never release your funds.
+- A stuck transaction can no longer freeze the engine. Receipt waits are capped, so a few stuck sells stop silently eating every open-position slot.
+- New **outcome tracking**: what a detection actually *became* — survival at 1h, 6h and 24h — plus a **reputation score for the deployer** behind it. Judge the source, not just the launch.
+
+### 🔐 Your wallet keys, properly encrypted
+- Wallet private keys move to **AES-256-GCM with scrypt key derivation** — authenticated, so a wrong or tampered key fails loudly instead of handing back plausible garbage. Existing wallets are **migrated in place**, and only once the round trip verifies.
+- This also closes a real hole: the encryption key was being built before the database was open, so it silently fell back to a constant **published in Wind's own source**. Wind now refuses to encrypt at all rather than create a wallet it could not recover.
+- Marketplace identity and keys are now minted from the system **cryptographic random generator**; the previous one was predictable from a couple of observed values.
+
+### 🌐 Dead node endpoints replaced
+- The default Ethereum and Polygon nodes had begun refusing Wind outright (HTTP 403 / 401), which broke balances, gas estimates and swaps on both chains. They are replaced with endpoints measured against the exact calls Wind makes — and you can point any chain at your own private node with `RPC_HTTP_<chainId>`.
+
+_Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
 ## v5.2.0
 
 **v5.2.0 — The Degen Trader engine, the Flyer.ai detection firehose, the World Monitor bonus app — and a hardened core after a full security audit.**
