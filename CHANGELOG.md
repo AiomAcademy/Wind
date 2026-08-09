@@ -5,6 +5,35 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.4.0
+
+**v5.4.0 — The engine can no longer invent a trade. Every fill is exchange-verified, your PnL history reconciles itself every hour, and small accounts stop bleeding margin on entry grids.**
+
+### 👻 Phantom positions — eradicated at the root
+- The polling fill-detector treated *"order gone from the book"* as proof of execution. During any bulk cancel — grid teardown, a pattern override, a refresh — that inference **invented positions out of cancelled tickets**: fabricated PnL, entry alerts for trades that never existed, and position-cap slots eaten by ghosts. Measured on a live account before the fix: **+$1.83 booked in a day against +$0.04 real**.
+- An entry is now booked only once the exchange **confirms it holds the position**; a DCA layer only when the position **actually grew**. On any API doubt Wind books *nothing* — a missed real fill is re-adopted from the exchange within seconds, while an invented one had no cure. Field-proven overnight: 70+ cancelled orders correctly recognized, zero phantoms, every genuine fill confirmed.
+- Closing a position used to leave a **stale ghost row** behind: it ate a slot under *Max open positions* and, after a reboot, came back with its old breakeven state — fresh entries on that symbol inherited it and were cut within minutes. Removal is now idempotent, no shell survives.
+- A John Wick TP1 on a position already at the exchange minimum (not splittable) is now recorded as the **full close it really is** — no more double-displayed, double-counted "partials".
+
+### ⚖️ PnL Truth Sync — your history corrects itself
+- New hourly service that cross-checks your trade history against the exchange's own **REALIZED_PNL records**: wrong amounts corrected, missing closes inserted (TP1 partials finally reach the history), duplicated partial rows neutralized, and rows with no exchange counterpart quarantined after three consecutive unmatched passes.
+- **Never deletes anything.** Every action is journaled with its before/after in `pnl_sync_log` — fully auditable, fully reversible. Live proof: a real account's books trued to within **$0.003** of the exchange.
+
+### 🛡️ Margin & caps — built for small accounts
+- Bidirectional entry grids are now **one BUY + one SELL** at the nearest level, carrying the whole per-side budget. Same entry price, same total budget — but ~11 orders per symbol become 2, and the single order finally clears exchange minimums: the *"minimum order amount"* reject storm (145/day measured) is gone. Legacy ladder available via `gridSingleEntryOrders: false`.
+- **Max open positions is now the account-wide ceiling.** Pattern Trader and Degen Trader can no longer exceed it whatever their own per-engine caps say — and waiting grids that no engine claims any more are swept automatically to free their frozen margin.
+- Pattern Trader gains a **3 concurrent** option in Max trades.
+
+### 📊 Honest numbers everywhere
+- Home's **Best day** now shows the real best calendar day — it was showing the best single *trade* (2.5× under-reported on real data). The 24h range shows *Best trade* instead, and a negative value finally shows red.
+- New **Layers Placed** card on Positions: the DCA ammo actually resting on the book, counted only for symbols that really hold a position.
+- **Trading fees are finally logged** — the exchange's income API wanted a different name for them, so every fee fetch had silently failed. Cost reporting now includes commissions.
+- Groundwork for the **BTC Stack** arc ships dormant (activates only in multi-assets mode), plus sniper calibration tooling.
+
+_Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
 ## v5.3.0
 
 **v5.3.0 — Catalyst swaps work on every chain again, sniped tokens can finally be sold, and your wallet keys get real encryption.**
