@@ -5,6 +5,23 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.4.1
+
+**v5.4.1 — Per-symbol truth on the order book, stats armed from the first second, and the Size column priced in dollars.**
+
+### 🎯 Order book — per-symbol at last
+- BingX answers a per-symbol open-orders request with the **whole account's book** (the symbol parameter is silently ignored). Every consumer was reasoning over other symbols' orders: the pre-placement check logged absurd counts ("316 live DCA orders" for one pair = every BUY on the account), the anti-duplicate price guard was seeded with **other symbols' prices** (a price collision could silently skip a legitimate DCA layer), and the post-cancel verification chased "survivors" that belonged to other pairs. Wind now scopes the response itself — every caller finally gets exactly what it asked for.
+
+### 📊 Statistics armed before the engines
+- Statistics, PnL Truth Sync and BTC Stack used to start **after** the grid-adoption loop — on an order-heavy account under rate limits that loop can run for hours, and any close happening meanwhile never reached the stats listeners. All three now arm in the first seconds of Start, before any engine.
+
+### 💵 Size column — priced in dollars
+- The Positions table's **Size** column now shows the **real $ committed** (margin, leverage excluded) right under the token amount — desktop table and mobile cards alike.
+
+_Backend changes land at reboot. Frontend — hard-refresh._
+
+---
+
 ## v5.4.0
 
 **v5.4.0 — Trade with BTC as your collateral, and an engine that can no longer invent a trade: every fill exchange-verified, PnL history that reconciles itself every hour, and small accounts that stop bleeding margin.**
