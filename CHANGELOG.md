@@ -7,7 +7,16 @@ see inside Wind, so this never drifts from the product.
 
 ## v5.4.0
 
-**v5.4.0 — The engine can no longer invent a trade. Every fill is exchange-verified, your PnL history reconciles itself every hour, and small accounts stop bleeding margin on entry grids.**
+**v5.4.0 — Trade with BTC as your collateral, and an engine that can no longer invent a trade: every fill exchange-verified, PnL history that reconciles itself every hour, and small accounts that stop bleeding margin.**
+
+### ₿ Multi-Assets — hold BTC, trade perps
+- Full support for BingX **Multi-Assets mode**: keep your account 100% in BTC and trade USDT-M perpetuals against it. Wind detects the account's asset mode on its own and adapts everywhere it matters.
+- **Sizing that cannot feed on itself** — in multi-assets mode, position sizing anchors to your configured base capital instead of the uPnL-inflated equity: a winning streak no longer compounds your position sizes toward liquidation, and deep DCA rungs stay armed through a dip (set `baseCapitalUsdt` at ~80% of initial collateral for a −20% cushion).
+- **BTC Stack** — a new page and engine for the BTC mandate: your BTC at start vs now vs a pure-HODL benchmark, plus a **sweep ledger**. Wind *proposes* a sweep amount (every clamp is named so you see which one binds — high-water-marked so nothing proposes after losses until the ledger recovers); **you** execute the USDT→BTC conversion on the exchange yourself; Wind records what actually happened. Compute-and-display only: no convert, transfer or withdraw call exists anywhere in Wind — non-custodial, absolute.
+- Dormant by default — activates only in multi-assets mode with a BTC start amount set.
+
+### 🛡️ Liquidation price — exchange truth
+- The Risk monitor now uses the **exchange's own liquidation price** whenever it is available, and tells you which source you are looking at (`exchange` vs `local-estimate`). The local formula remains only as fallback.
 
 ### 👻 Phantom positions — eradicated at the root
 - The polling fill-detector treated *"order gone from the book"* as proof of execution. During any bulk cancel — grid teardown, a pattern override, a refresh — that inference **invented positions out of cancelled tickets**: fabricated PnL, entry alerts for trades that never existed, and position-cap slots eaten by ghosts. Measured on a live account before the fix: **+$1.83 booked in a day against +$0.04 real**.
@@ -28,7 +37,10 @@ see inside Wind, so this never drifts from the product.
 - Home's **Best day** now shows the real best calendar day — it was showing the best single *trade* (2.5× under-reported on real data). The 24h range shows *Best trade* instead, and a negative value finally shows red.
 - New **Layers Placed** card on Positions: the DCA ammo actually resting on the book, counted only for symbols that really hold a position.
 - **Trading fees are finally logged** — the exchange's income API wanted a different name for them, so every fee fetch had silently failed. Cost reporting now includes commissions.
-- Groundwork for the **BTC Stack** arc ships dormant (activates only in multi-assets mode), plus sniper calibration tooling.
+- **Refill DCA actually clears the old ladder** — the per-order cancels it relied on were silently failing (exchange order ids exceed JavaScript's safe integer range, so every cancel came back "order not exist" and was swallowed), and fresh ladders stacked on top of dead ones — one symbol reached 44 live layers for a 30-layer config. The wipe is bulk now, no ids involved.
+
+### 🎯 Sniper calibration tooling
+- **`sniper-preflight`** — measure a detection setup against real outcome data before risking anything; **`sniper-apply-calibration`** — apply the measured thresholds in one step; plus a calibration report generator. The full run and its methodology live in the docs.
 
 _Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
 
