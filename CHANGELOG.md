@@ -5,6 +5,42 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.5.0
+
+**v5.5.0 — The rebalance rebalances again: every open position now carries the full ladder its share of the account pays for.**
+
+### ⚖️ DCA margin, shared the way you configured it
+- **Your slot is fixed: equity ÷ Max open positions.** Set 5 max positions and every symbol is sized on one fifth of the account, always — whatever the book currently holds. The ladder then takes whatever is left of that slot once the position's own exposure is deducted.
+- Before this, the divider was the *live* position count: the first symbol to open on an empty book divided by one and was budgeted at **100% of the account**. Measured on a real account: two symbols froze 97% of the equity between them while three later positions could not place a single layer — one was refused its first \$2.09 rung on a \$1,010 account.
+- The per-symbol cap now also counts the margin the **existing** ladder already freezes, so a heal can no longer top a symbol back up to a budget it is already holding.
+- Symbols are visited **hungriest first**: margin freed by a close goes to the position with the emptiest ladder, not to whoever happens to sit first in the list.
+
+### 🔄 A rebalance that actually rebalances
+- The fixed ladder was additive-only — it could add missing rungs but never cancel, so a first-mover's oversized ladder stayed oversized until its position closed. The rebalance now **cancels a symbol's book and rebuilds the ladder at the right size** whenever its committed margin has drifted materially from its slot. Over-committed frees margin for the starved; under-committed finally gets the depth it is owed.
+- Proven on a live account in two passes: two positions went from 14 rungs using \$57 to **30/30 rungs using \$157**, without a single failed rebuild.
+- It never cancels what it cannot rebuild: a rate-limited account, a stale balance reading, a breakeven-armed or closing position, or a growth the account cannot fund all fall back to the additive heal. If the position vanishes during the cancel window the rebuild **aborts** — no ladder is ever armed on a symbol that no longer holds anything. A rebuild that comes back short is retried, then re-levelling stops for the pass. At most 3 symbols per pass (`dcaRelevelMaxSymbolsPerPass`), only past a 20% drift (`dcaRelevelMinDriftPercent`), and the whole mechanism can be switched off (`dcaFullRelevel`).
+- **A new position gets its full ladder immediately.** The fast-boot rung cap now applies only to the boot deployment it was written for, instead of leaving a fresh entry at a quarter of its defense until the next cycle.
+- A symbol whose exchange minimum makes each rung oversized will saturate its slot with fewer rungs than configured — that is expected: the shared budget always wins over the rung count.
+
+### 📐 Patterns-only is a real mode again
+- Selecting **Patterns Dynamics Levels** alone used to stop the grid engine — which is also the execution layer every engine opens through. The result was silent: no trade could open at all, and held positions lost their DCA management. Patterns-only now runs the engine as a pure execution layer, with no standing grids of its own.
+- Saving your configuration no longer resurrects the configured symbols as standing grids behind the scenes.
+
+### 💵 Honest money, again
+- The Trade History headline is now **Net PnL** — fees and funding deducted — with the gross and the fee total shown underneath.
+- The Positions table shows the **real \$ committed** per position (margin, leverage excluded) under the token amount, and the Exposure card leads with total margin instead of leveraged notional.
+- **PnL Truth Sync** stops mistaking a tiny real close for a phantom: dust-sized exchange closes still match their Wind row, a quarantine now requires the row to have gone unmatched for hours rather than across two quick reboots, and any row wrongly quarantined is **restored automatically** with the exchange's own figure.
+- Pattern Trader gains a **Reset** for the re-entry cooldowns — useful after closing a position by hand, since the cooldown is armed at entry.
+
+### 🛡️ Quieter, sturdier plumbing
+- A public RPC node refusing a log query is no longer reported as a fatal Wind error — it joins the throttled network line where it belongs.
+- The exchange's per-symbol position-value ceiling now skips that one rung instead of halting the whole ladder (it was being misread as a rate limit).
+- Ladder rebuilds are serialized per symbol, so a manual Refill or a config save can no longer land inside a rebalance's cancel window; and every engine is re-pointed at the new exchange client after an API-key change.
+
+_Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
 ## v5.4.1
 
 **v5.4.1 — Per-symbol truth on the order book, stats armed from the first second, and the Size column priced in dollars.**
