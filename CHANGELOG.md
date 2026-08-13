@@ -5,6 +5,26 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.5.1
+
+**v5.5.1 — Every line in your history says what really happened, and says it once.**
+
+### 📜 Closes named by the engine that made them
+- Rows added to your history by the PnL Truth Sync were all called **Exchange Sync**, which reads like "closed on the exchange". Two of them were in fact John Wick TP1 partials, matching the engine's own log to the second — and were read as positions that had never taken their partial. Inserted rows now carry **the reason Wind gave the close** (John Wick TP1, pullback exit, No-Layer TP, manual…), along with the side, quantity and entry price those lines were missing.
+- The name is only claimed when the evidence is unambiguous: one matching engine event within ±15 seconds, and a PnL sign that agrees. Anything less stays an honest **Exchange Sync** — a wrong reason on a money row is worse than no reason.
+
+### 🚫 One close, one line
+- A real close whose exchange record arrived hours late was quarantined as a phantom. When the record finally landed, the matcher no longer saw the row it had itself hidden, concluded the close was missing and **inserted a duplicate** — while a separate pass un-quarantined the original. Measured on a stress account: **34 doubled closes and \$96 of gain that never existed**, enough to bury a real loss the operator was looking for.
+- Quarantined rows now take part in matching, and a row whose counterpart arrives is **restored in place** — never duplicated. A second guard refuses any insertion when a line already covers that close within a minute. The reconciliation gap that exposed this went from **+\$95.92 to \$0.00**.
+
+### 🩹 Exchange rate limits, read correctly
+- BingX error **109429** carries two different meanings: an account-wide throttle that comes with an explicit retry time, and a per-symbol position-value ceiling. Wind now tells them apart — it skips the single oversized rung in one case, and in the other **arms its backoff from the exchange's own unblock timestamp**, so the next pass knows the account is throttled instead of cancelling a ladder it cannot rebuild.
+- Measured over six hours on a stress account: exchange rejections fell from roughly **280 to 13 per hour**, and no ladder was left empty.
+
+_Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
 ## v5.5.0
 
 **v5.5.0 — The rebalance rebalances again: every open position now carries the full ladder its share of the account pays for.**
