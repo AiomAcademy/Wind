@@ -5,6 +5,34 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.5.3
+
+**v5.5.3 — TradFi Dynamics: Wind now trades everything on the exchange that isn't crypto.**
+
+### 🌐 A fifth engine, and a universe it discovers by itself
+- **Stocks, forex, commodities and indices** — up to **197 live instruments** on a real account (157 US stocks such as TSLA, MSFT and GME; 19 forex pairs; 13 commodities; 8 indices). Selectable in Configuration as **TradFi Dynamics**.
+- It runs the **same proven machinery**: chart-pattern detection, entry through the grid engine with its DCA ladder, John Wick trailing exits, the same risk gates. Nothing experimental — the identical engine, pointed at a different universe.
+- The universe is **read from the exchange**, not hand-kept. BingX publishes no asset-class field, so Wind reads the symbol taxonomy (`NCFX` forex, `NCSK` stocks, `NCCO` commodities, `NCSI` indices) and the human name that comes with it — `NCSKGME2USD-USDT` is GameStop. New listings appear on their own.
+- **Exclusive by design**: while TradFi runs, the crypto strategies stay off. The grid engine keeps running as the execution layer with no standing grids of its own — the mistake that once made patterns-only silently open nothing.
+
+### 🕐 Wind learns that markets close
+- Crypto never closes, so nothing in Wind had ever needed to think about it. A closed market still answers with candles — **stale** ones — so a naive scan would keep finding patterns on a frozen chart and fire into a book that cannot fill.
+- Freshness of the last candle is the only signal the exchange gives, so a market found quiet is **parked** and rechecked later rather than re-fetched every pass. That also keeps the API quota sane: outside US hours most of the universe costs nothing to skip.
+- A stale chart can never be traded — not by the scanner, and not by **Trade now** either.
+
+### 📏 Order sizes that the exchange accepts
+- BingX publishes two different numbers per contract: the lot **step** and the minimum **order**. On crypto they sit close together; on forex the gap is **147×** — GBPJPY steps by 0.01 but refuses anything under 1.47 — and both legs of its grid came back rejected.
+- Sizing now floors on the exchange minimum **for non-crypto only**. Crypto is deliberately untouched: 566 of the 580 live crypto contracts declare the same field larger than their step, yet they have always traded at the step without a single rejection.
+- The handful of yen crosses whose minimum is genuinely large are **pinned, not excluded** — they enter at ~\$320 of notional (~\$32 of margin), comfortably inside a slot. Wind's rule has always been that the budget wins over a target size; a symbol is never dropped for being expensive.
+
+### 🎛️ Its own page
+- **TradFi Dynamics** in the sidebar: live detections with sparklines, universe size, how many markets are currently closed, and every setting — confidence, timeframe, concurrent trades, scan interval, universe cap, re-entry cooldowns.
+- Each **asset class toggles on its own**, so you can run forex only, or everything but stocks. At least one always stays on.
+
+_Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
 ## v5.5.2
 
 **v5.5.2 — The numbers on your dashboard now say what your account says.**
