@@ -5,6 +5,32 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.5.2
+
+**v5.5.2 — The numbers on your dashboard now say what your account says.**
+
+### 💵 Portfolio PnL is net, and lands on your real equity
+- Fees and funding live in their own ledger and never reached the Home chart, so the curve drifted above the account by exactly what you had paid. They are now folded in **at their own timestamps** — the line steps down when a fee is charged, instead of being deducted in one lump at the end.
+- Measured on a live account: the curve used to end at \$2,066 and read **+\$67 gross**; it now ends on **\$2,059.71 — the exchange's own figure — and reads +\$61 net**.
+- Hovering a point shows the **equity at that moment** to the left of the delta. Knowing you moved +\$47 says little without knowing what the account was worth.
+
+### 🏆 A breakeven is not a loss
+- A close that realises exactly \$0 was being counted as a **loss**. On a live account that turned 5 real losses into 12 and dragged the win rate from **93.2% down to 85.0%**.
+- Worse than the display: those phantom losses fed the **consecutive-loss streak the risk manager reads**, so closes that lost nothing could arm the circuit breaker. Breakevens are now their own category — counted as trades, absent from both columns and from both streaks — and shown as *68W / 5L / 7 breakevens* so the figures reconcile.
+- The live counters now agree with the historical reconstruction, which had always counted it this way.
+
+### 🏷️ Every engine says its own name
+- Three engines announced *"AsGrid triggered"* — a description of the execution layer, not of the engine that decided the trade. Each now names itself: **Patterns Dynamics**, **Degen Dynamics**, **TradFi Dynamics**.
+- Engine attribution stopped assuming *"outside the AsGrid universe ⇒ Patterns"*. That rule was written when only two engines existed and it silently filed every stock, forex and commodity trade under Patterns Dynamics.
+- Existing history is **deliberately left alone**: Pattern Trader really did open those trades, and re-labelling them would erase that.
+
+### 📱 A password the phone can't rewrite
+- Tapping the eye to check your password turned the field into plain text — and a plain text field on mobile gets the keyboard's auto-capitalize and autocorrect, silently altering what you typed. Desktop never does this, which is exactly why it looked like *"works on PC, invalid credentials on the phone"*. Both login fields are now shielded.
+
+_Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
 ## v5.5.1
 
 **v5.5.1 — Every line in your history says what really happened, and says it once.**
