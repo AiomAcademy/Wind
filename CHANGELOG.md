@@ -5,6 +5,64 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.5.6
+
+**v5.5.6 — A rescue close with no price is no longer booked as a total loss.**
+
+### 💵 The half that invented a −\$105 loss
+- When the exchange throttles a full close, Wind closes the position in **halves**. The half's result was computed from the live price — and with no price at all that value is **zero**, which the formula reads as _the asset went to zero_. The entire notional of the half was booked as a loss.
+- Measured on 2026-08-14 at 19:31: GME booked **−\$105.35** — exactly its entry × quantity. That figure went straight to the **daily loss circuit breaker**, which can stop the day's trading over a loss that never happened.
+- Non-crypto contracts have no continuous price feed, so this was their **normal** path, not a rare edge case.
+- A half with no price is now **left out of the books instead of invented**. Wind logs plainly that the result is unknown, and the hourly PnL sync inserts the real figure from exchange income — the same rule a full close has always followed.
+
+_Backend — effective at reboot (self-host: re-pull + recreate the container). Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
+## v5.5.5
+
+**v5.5.5 — The DCA settings are no longer hidden behind the strategy you picked.**
+
+### 🔧 Advanced Configuration shows what the engine actually runs on
+- The **AsGrid Engine** and **AsGrid DCA Layers** sections were gated on the active strategy, so running **Patterns Dynamics** hid them entirely — including **DCA Spacing**, **DCA Layers** and the size multipliers. Reported on a live account: the only way left to change the ladder spacing was the raw JSON tab.
+- Those sections are not a strategy. They are the **execution layer**: Patterns, Degen and TradFi are detectors that all open through the grid engine and use its DCA ladder, its leverage and its TP settings. They now show whatever strategy is selected.
+- The old exception rescued only `Asgrid + Patterns` and `TradFi` — and it tested for a section owner (`patterns`) that no section has ever been tagged with, so half of it matched nothing.
+
+_Frontend only — hard-refresh and the section is there. No reboot needed._
+
+---
+
+## v5.5.4
+
+**v5.5.4 — A closed trade now tells the truth, and a won trade stays won.**
+
+### 💵 Closes that were booked at zero
+- A position closing while its price feed was silent was recorded as a flat **0.00%** — and that zero was fed to the **daily loss circuit breaker**, which therefore never saw the loss. Measured live: a −\$42.21 close counted as nothing.
+- Wind now falls back to the **last known price**. Seen the same day: MRVL **+14.94%**, Coffee **+14.50%**, ORCL **+14.30%** — all would have been zeros. Non-crypto contracts get no live feed, so **every** TradFi close took that path.
+- With **no price at all**, Wind says so instead of inventing one: the trade is **excluded** from the breaker rather than counted as break-even, and the hourly PnL sync repairs the row. An unknown result is never a harmless one.
+
+### 🔁 A winning exit now actually keeps us out
+- The re-entry cooldown was armed at the **open**, so a long-held position left it already expired at close — and the grid re-armed **10 seconds** after a profitable exit without consulting it. Lived: WIF out at 14:57 after a 7-hour hold, back in at **15:05**.
+- It is now armed **at the close**, and both doors respect it — the detector and the grid re-setup. Your own configured symbols keep their standing grid regardless.
+
+### 🧹 A rebalance that heals instead of demolishing
+- The ladder **re-level** — cancelling a symbol's book to rebuild it at its slot budget — is **removed**. Sound on paper, ruinous against a hard pending-order ceiling: the rebuild could not complete, so the drift never resolved and the next pass wiped again.
+- The additive heal already keeps ladders whole without cancelling anything, hungriest symbol first.
+
+### 🏷️ Every instrument, by its real name
+- `NCSKGME2USD` is GameStop. Positions, history, risk, reports, the palette and the toasts now show the **venue's own name** and a logo — stocks, flags for forex, drawn icons for metals and oil — on desktop **and** mobile.
+- The name map is **kept on the device** and a failed lookup is retried rather than cached forever. One request leaving before sign-in used to poison a whole session with machine tickers — visible only on phones.
+
+### 🛠️ Engine fixes found by running it
+- **TradFi entry grids are no longer cancelled after 10 minutes** — the unbacked-grid sweep knew only two engines by name, so a fifth one's grids looked orphaned.
+- **The TradFi engine no longer forgets its positions** while trading is off. Verified in production: 30 claims preserved where 17 would have been erased.
+- **Unfilled entry grids release their slot** instead of holding it forever — the engine had reached 30/30 "live" while holding 13 positions.
+- **Breakevens are counted as breakevens**, not folded into losses.
+
+_Backend changes land at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
 ## v5.5.3
 
 **v5.5.3 — TradFi Dynamics: Wind now trades everything on the exchange that isn't crypto.**
@@ -89,11 +147,11 @@ _Backend changes land at reboot (self-host: re-pull + recreate the container). F
 - The per-symbol cap now also counts the margin the **existing** ladder already freezes, so a heal can no longer top a symbol back up to a budget it is already holding.
 - Symbols are visited **hungriest first**: margin freed by a close goes to the position with the emptiest ladder, not to whoever happens to sit first in the list.
 
-### 🔄 A rebalance that actually rebalances
-- The fixed ladder was additive-only — it could add missing rungs but never cancel, so a first-mover's oversized ladder stayed oversized until its position closed. The rebalance now **cancels a symbol's book and rebuilds the ladder at the right size** whenever its committed margin has drifted materially from its slot. Over-committed frees margin for the starved; under-committed finally gets the depth it is owed.
-- Proven on a live account in two passes: two positions went from 14 rungs using \$57 to **30/30 rungs using \$157**, without a single failed rebuild.
-- It never cancels what it cannot rebuild: a rate-limited account, a stale balance reading, a breakeven-armed or closing position, or a growth the account cannot fund all fall back to the additive heal. If the position vanishes during the cancel window the rebuild **aborts** — no ladder is ever armed on a symbol that no longer holds anything. A rebuild that comes back short is retried, then re-levelling stops for the pass. At most 3 symbols per pass (`dcaRelevelMaxSymbolsPerPass`), only past a 20% drift (`dcaRelevelMinDriftPercent`), and the whole mechanism can be switched off (`dcaFullRelevel`).
-- **A new position gets its full ladder immediately.** The fast-boot rung cap now applies only to the boot deployment it was written for, instead of leaving a fresh entry at a quarter of its defense until the next cycle.
+### 🔄 The rebalance heals, it no longer demolishes
+- The ladder re-level — cancelling a symbol's book to rebuild it at its slot budget — **has been removed.** It was sound on paper and ruinous against an exchange's pending-order ceiling: the rebuild could not complete, so the drift never resolved and the next pass wiped again. Measured on a live account: **zero** `101419` refusals on every day before it shipped, then **143-289 re-levels and hundreds to thousands of refusals every single day** after.
+- The additive heal already keeps ladders whole — it adds the missing rungs each cycle without cancelling anything. What the re-level added was reclaiming margin from over-committed symbols, and that is not worth a permanent demolition loop against a hard ceiling.
+- Fair sharing still happens, just without the wrecking ball: symbols are visited **hungriest first**, so margin freed when a position closes goes to the emptiest ladder.
+- **A new position gets its full ladder immediately.** The fast-boot rung cap applies only to the boot deployment it was written for, instead of leaving a fresh entry at a quarter of its defense until the next cycle.
 - A symbol whose exchange minimum makes each rung oversized will saturate its slot with fewer rungs than configured — that is expected: the shared budget always wins over the rung count.
 
 ### 📐 Patterns-only is a real mode again
