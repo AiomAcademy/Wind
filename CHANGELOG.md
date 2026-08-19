@@ -5,6 +5,53 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.5.8
+
+**v5.5.8 — Eleven defects from a two-week adversarial audit, none of which touched real money.**
+
+Two weeks of intense changes (v5.3.0 → v5.5.7) were re-read by ten independent reviewers, every finding attacked by two skeptics; only what survived both is here. Verdict: **no confirmed defect altered an order, a price or a realized dollar** on a live single-asset account. What broke was bookkeeping, a safety net's ordering, and a few latent multi-assets paths — all fixed.
+
+### 🧹 Reporting truth (PnL sync)
+- A partial TP backfilled by the sync **vanished from Statistics and Home** — excluded from history as a partial, and its trades twin retyped — counted by neither. It is now counted exactly once.
+- The income window was **one un-paginated page** (1,000 rows): on a busy day a real close missing from the page was quarantined as a phantom. Income is now paginated by time, and a truncated window **suspends** the quarantine step.
+- A restored row could be labelled so that the boot-time neutraliser re-zeroed it — an exchange-verified profit flip-flopping to a permanent 0. Restore now uses the sync's own label, and the neutraliser never touches a row the sync has matched.
+- The "N consecutive passes" quarantine counter was lifetime, not consecutive. It now resets on every match.
+
+### 🛟 Safety nets
+- Under Patterns / TradFi, three config hot-paths (DCA params, grid direction, add-symbol) still deployed **standing AsGrid entry grids** on every config symbol — positions nobody asked for. They now respect the detector-only rule.
+- Parachute **close_all** swept every ladder and backup stop **before** reading positions; one rate-limit error left the book **naked and latched**. It now flattens first, retries the read, and aborts without touching anything if the book cannot be read.
+- TradFi: a released reservation left its grid standing and uncounted (the cap stopped biting after 4 h); a re-trade inherited an expired hold clock. Both fixed.
+- A genuine DCA fill detected after a partial close was booked **cancelled** (the growth baseline never shrank). It now baselines on the exchange-synced quantity.
+
+### 🧪 Multi-assets (dormant) — ready for the mandate
+- Day-start anchor now includes the open book's unrealized (a mid-day reboot no longer reads an old drawdown as today's loss and fires the parachute); gate 6d reaches the side-less grid on an empty book; the jump guard resets the zero-equity streak. The risk matrix is now **locked in tests**: a pure BTC move with a flat book triggers nothing; a trading loss of the same size does.
+
+_Backend — effective at reboot (self-host: re-pull + recreate the container). No frontend change. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
+## v5.5.7
+
+**v5.5.7 — The LIQ you see is the one you'll get, and the ladder stops feeding the exchange's punishment.**
+
+### 🛡️ One refusal stops the ladder — no more account-wide 109429
+- Two BingX refusals were being retried rung after rung: **101209** (position at its leverage-tier cap) and **109415** (contract paused exchange-side — heating oil, aluminium, soybeans). Every deeper rung is larger, so once one is refused they all are; the engine kept asking, ×3 through the retry wrapper. Measured on master: **72 refusals in minutes**, then BingX's 20-per-8-min punishment (**109429**) blocked **every** symbol's rungs — 12 ladders starved to 0/30 for 16 hours.
+- Now: a tier-cap or paused refusal **ends the pass** and rests that symbol's ladder for an hour (a TP or close rebuilds it without the rest). First cycle after the fix: 4 refusals instead of 72, **zero 109429**, 294 rungs placed.
+
+### 🎯 LIQ · SL — computed with the whole ladder eaten
+- The liquidation price shown was where the position **as it stands today** would be liquidated — a fiction, since the DCA rungs exist precisely to fill on the way down. Wind now projects the **final** position (every configured rung filled, including the ones the order ceiling keeps off the book), and shows that LIQ — with "N layers in" so you know how many it assumed.
+- **SL ≈ $** follows: the loss at liquidation with the ladder eaten is the **whole symbol budget**, not today's tiny qty × distance. APT read −\$1.26; the truth is **−\$178**. Every position converges on its ~\$175–205 budget — that is the number to look at.
+
+### 📈 Trading View charts the exchange you trade on
+- Clicking a position opened a chart that went to **Binance Futures** for candles — so every TradFi contract and every BingX-only alt came back "No chart data". Candles now come from **your exchange** (BingX, which serves TradFi + every listed alt), Binance as fallback. The pair selector pins the current symbol and shows the venue's name (MSTR/USDT, not NCSKMSTR2USD/USDT).
+
+### 🔧 Multi-assets: the venue's collateral table is now actually read
+- `marginAssets` rows are keyed by `currency`, not `asset` — the shape had only ever been guessed (the endpoint 404s on VST). Every lookup came back empty and the derived fallback ran forever while claiming to read the venue. Fixed and replayed against the real payload. Dormant until an account switches modes; single mode untouched.
+
+_Backend — effective at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
 ## v5.5.6
 
 **v5.5.6 — A rescue close with no price is no longer booked as a total loss.**
