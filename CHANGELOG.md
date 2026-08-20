@@ -5,6 +5,30 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.5.9
+
+**v5.5.9 — A liquidation is a loss the books must show, and the sync now proves its own honesty.**
+
+### 🚨 Liquidations were invisible to every total
+- BingX settles a liquidation through the **INSURANCE_CLEAR** income type, not REALIZED_PNL. The PnL sync only read the latter — so when a real position was liquidated (\$180.34 on the live account), the engine's own loss row found no exchange counterpart and was **quarantined as a phantom**. The account was down; the books were not.
+- INSURANCE_CLEAR is now grouped as realized. Self-healing proven live on BOTH instances: the quarantined row was restored with the venue's own figure on the very next pass, and a second liquidation was caught on the other instance the same hour.
+
+### 🧾 The sync proves its own books every pass
+- Every pass now journals a **reconciliation summary**: visible history vs the exchange's own realized total over the window, with a drift alert (hysteresis, max(\$1, 0.5%)).
+- **Evidence coverage**: the venue silently forgets income beyond ~2 days — absence of memory is not absence of income. Verdicts (quarantine, drift) are now bounded to where the exchange actually remembers; a real close can no longer be branded a phantom at the retention boundary.
+- **Blind rows get eyes**: sync-inserted rows carried no price/side/qty. They are now filled from the venue's own fills (never overwriting), a few per pass.
+- Corrected rows get a **coherent pnl_percent** (30 rows had the % contradicting the \$ sign), duplicates are labelled as duplicates, and `POST /api/pnl-sync/run {dryRun:true}` plans everything and writes nothing.
+
+### 📱 The app answers before you log in
+- `/api/health` — the first request the mobile app makes — ran three COUNT scans over the whale tables (measured 14-20 s on a 670k-row radar). The phone timed out and said "offline" with perfectly good credentials. Liveness is now memory-only: **milliseconds**, radar counters cached 60 s.
+
+### 🎛️ Re-entry cooldown, in your hands
+- The Patterns page gets a **cooldown dropdown**: Off / 30 min / 1-12 h (default 4 h), applied live, with Reset for already-armed timers.
+
+_Backend — effective at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
 ## v5.5.8
 
 **v5.5.8 — Eleven defects from a two-week adversarial audit, none of which touched real money.**
