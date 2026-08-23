@@ -5,6 +5,38 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.6.0
+
+**v5.6.0 — A new home for the community, a chat that belongs to everyone, and the master learns to throw a party.**
+
+### 🏠 A new Discord home
+- The community moved to a **brand-new official server** — the old one had collected years of bots and scammers that moderation alone could not undo. Everything came along: every channel, role and permission, all 68 emojis, the verify gate, ticket support, install guides, and **every patch note since v4.8.6**, reposted in order with their banners.
+- The old server stays up read-only with a single farewell channel pointing home. New permanent invite: **discord.gg/GFNzz4kZkr** — wired across the site, the app and the bot.
+
+### 💬 Wind Chat is now FREE for everyone
+- The Chat Pass is retired: **channels, DMs, presence and the desktop messenger dock unlock on every instance**, no purchase, on by default. Past buyers keep their collectible NFT.
+- The passcode-encrypted chat lock stays. **Chat earned a slot in the mobile dock** (next to Wallet) — the right-edge swipe still works too.
+
+### 📣 Socials — the master's growth cockpit (new page)
+- Master-only page (profile menu, above Logs): **Discord member and X follower evolution** charted over time (hourly / 6-hourly sampling), with 24h and 7-day deltas.
+- A **native giveaway engine**: launch a giveaway from the panel and the Wind bot posts it in #⚡events, counts entries on a 🎉 button, draws winners at the deadline by itself — with End now / Reroll / Cancel. State survives reboots. No third-party giveaway bot needed.
+
+### ⚔️ Wind Arena & ⛏️ Miner mode (previews)
+- **Wind Arena** — an original auto-battler built for \$WINDH wagers: deterministic battle engine (same seed → same fight, provably fair), fighters, and a battle scene. Escrow and matchmaking are still in the lab — this ships the foundation.
+- **Miner mode** — a long-only gold engine (XAU) with a backtested safe profile (leverage 5, spacing 0.5 — zero liquidations over 16 months of history). Opt-in strategy, off by default.
+
+### 🐦 X (Twitter) auto-poster
+- The master can cross-post its public feeds to the Wind X account: the daily 24h report with its chart, Flyer.ai setups, community CTAs and market news — throttled to the free tier, dormant until API credentials exist. All knobs in Advanced Config.
+
+### 🔧 Engine truth
+- **John Wick closes now book the price the engine actually saw** at the trigger, not a stale last-known — a close during a WS gap can no longer record a 0.00% PnL that hides a real loss from the daily loss breaker.
+- **PnL sync price validator**: a booked close price that sits outside the 1-minute candle containing the close is provably impossible — it is repaired to the candle bound, recomputed and journaled (exchange income stays senior).
+- Dev quality-of-life: the Vite dev proxy targets 127.0.0.1 (the localhost→::1 trap), and assorted dashboard polish across Home, Positions, Reports and the sniper pages.
+
+_Backend — effective at reboot (self-host: re-pull + recreate the container). Frontend — hard-refresh. Trading does not auto-start after a reboot — press Start on the dashboard._
+
+---
+
 ## v5.5.9
 
 **v5.5.9 — A liquidation is a loss the books must show, and the sync now proves its own honesty.**
@@ -393,7 +425,7 @@ _Backend changes land at reboot (self-host: re-pull + recreate the container). F
 ### 🏠 The Wind HUB Community — 10,000 strong
 - Wind's Discord home is now the reclaimed community server — **~10,000 members** — rebuilt end-to-end by the Wind bot: full channel structure, roles, panels, 72 informational embeds and the complete patch-notes history, with **nothing deleted** (the old era is archived, and the historic announcements feed keeps its years of history for continuity).
 - **Pick your pings**: a new self-service roles channel — tap a button to toggle 📜 Patchnotes, 🍃 Wind Live Trades, 📢 Announcements or 🎁 Events & Giveaways. No spam, your choice, one tap off.
-- Support tickets, one-click verify and the live-trades mirror all moved in; install guides and the server's "What is Wind?" got a breathing-room rewrite. New permanent invite: **discord.gg/qZfaTyndgv** — wired across the site and the app.
+- Support tickets, one-click verify and the live-trades mirror all moved in; install guides and the server's "What is Wind?" got a breathing-room rewrite. New permanent invite: **discord.gg/GFNzz4kZkr** — wired across the site and the app.
 
 ### ⚡ Token Sniper — 1-click Buy from your Wind wallet
 - Every fresh detection now has a **Buy button**: pick a wallet, an amount in the chain's native coin, confirm — done. Quotes are live, and the route is chosen for you: brand-new **V2 pools** (most fresh launches, all of BSC) go through the fee-on-transfer-safe V2 routers, **V3 pools** through the proven swap path.
