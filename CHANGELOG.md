@@ -17,10 +17,6 @@ see inside Wind, so this never drifts from the product.
 - The Chat Pass is retired: **channels, DMs, presence and the desktop messenger dock unlock on every instance**, no purchase, on by default. Past buyers keep their collectible NFT.
 - The passcode-encrypted chat lock stays. **Chat earned a slot in the mobile dock** (next to Wallet) — the right-edge swipe still works too.
 
-### 📣 Socials — the master's growth cockpit (new page)
-- Master-only page (profile menu, above Logs): **Discord member and X follower evolution** charted over time (hourly / 6-hourly sampling), with 24h and 7-day deltas.
-- A **native giveaway engine**: launch a giveaway from the panel and the Wind bot posts it in #⚡events, counts entries on a 🎉 button, draws winners at the deadline by itself — with End now / Reroll / Cancel. State survives reboots. No third-party giveaway bot needed.
-
 ### ⚔️ Wind Arena & ⛏️ Miner mode (previews)
 - **Wind Arena** — an original auto-battler built for \$WINDH wagers: deterministic battle engine (same seed → same fight, provably fair), fighters, and a battle scene. Escrow and matchmaking are still in the lab — this ships the foundation.
 - **Miner mode** — a long-only gold engine (XAU) with a backtested safe profile (leverage 5, spacing 0.5 — zero liquidations over 16 months of history). Opt-in strategy, off by default.
