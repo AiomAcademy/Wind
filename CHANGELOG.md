@@ -5,6 +5,35 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.14.0
+
+**v5.14.0 - The arena gets its depth: a dark table, a living stage, and every room dressed.**
+
+### 🌌 Figure on ground
+- The whole world now rests on a **dark roasted-brown table** - the parchment cards float on it instead of melting into a same-colour page. Parchment grain, an edge vignette, and a board shadow on large screens finish the trick.
+- The six rooms are **struck tokens**: raised at rest, pressed into gold where you stand. Tapping one now lands you on the **arena banner**, not mid-page.
+- The account notice is a **push at the bottom of the screen** - sliding up once, floating over the page, never eating a tap around it.
+
+### ⚔️ The stage gains three distances
+- Distant storm clouds, a shaded wall laid in stone courses, brazier glow, pennant shadows, a vignette pulling the eye to the ring - and a **near plane** of rocks and dry tufts cut off by the frame. The crowd sways on offset clocks and **lifts as one on a crit**.
+- The fighters' HP lives on **parchment plates** instead of floating on the sky, and both masthead guardians finally stand their pillars - the right one had been mirrored clean out of the picture since the banner shipped.
+
+### 🗺️ Every room dressed
+- **The Storm's Path is a trail**: milestone stones joined by a dotted footpath, the next one struck in gold, each level's three cards hanging beneath - and the path's end tells the truth about being the end.
+- **Trials**: the nine winds as a chevron ladder with your rank burning in it, a bracket that visibly **funnels eight names into one** with a crown on the champion, podium medals on the ladder.
+- **Squadron**: every banner flies a pennant coloured by its own name, the battle line is a formation with a gold leader disc, and the war score is struck large - **4-0** reads before any word does.
+- **Apprentices**: a bloodline - the mentor heads a spine every apprentice hangs from.
+- **Shop**: done objectives wear a struck green medallion, open ones a waiting ring; Essence packs carry bronze, silver and gold on their edge.
+- **Collection**: every piece sits in a carved socket, and an unearned piece leaves its socket visibly empty - a slot waiting to be filled reads as progression.
+
+### ✨ Two ceremonies
+- Naming your Brawler **strikes the medallion** - the same coin you find in your Cell a second later.
+- After a bout the verdict rises and the takings **drop onto the table one after another**, the level-up struck in gold. Every new animation is one-shot, state-driven, and off under reduced-motion.
+
+_Frontend - hard-refresh. The public arena picks it up on its own._
+
+---
+
 ## v5.13.0
 
 **v5.13.0 - Signing up for Wind Arena creates your $WINDH address, in your browser, in front of you.**
