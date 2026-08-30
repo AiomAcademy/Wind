@@ -5,6 +5,224 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.13.0
+
+**v5.13.0 - Signing up for Wind Arena creates your $WINDH address, in your browser, in front of you.**
+
+### 🔑 Twelve words, and they are really yours
+- Creating an account generates a **Solana address in the browser**. We receive the public half and nothing else. The derivation is the standard one - BIP-39 to `m/44'/501'/0'/0'` - so the same twelve words typed into **Phantom or Solflare give the same address**. Your account is portable out of our hands on the day you make it, which is the only honest version of "non-custodial".
+- Verified against an independent implementation on every build, and checked in a live browser: the address the page shows is byte-for-byte the one a real wallet derives.
+
+### ✍️ We ask for three of the words back
+- Not a checkbox. A checkbox measures whether someone can click. Wind has already lost a set of Solana keys once - the trading backend's companions were generated randomly, derived from no phrase, and had to be quarantined when they went - so this flow will not finish until you can type three of your words from memory.
+- The phrase is kept **encrypted** on your device, under a key that never leaves it. Set a passphrase and nothing on the device opens it without you. If your browser refuses to store it at all - private browsing, usually - the account is still created and the page **says so**, rather than letting you assume you can come back.
+
+### 🎒 Your Brawler comes with you, and you are told exactly what changed
+- Level, name, birth and the shape of your build survive. Essence, nuggets, ranks and win records do not, and the destiny seed is re-minted - the engine runs in your browser, so a seed you picked is a destiny you shopped for.
+- Every one of those changes is **listed back to you** at the moment it happens.
+
+### 🩹 A broken save no longer breaks the page
+- A stored Brawler whose seed was malformed threw during render and left a white page. It is now repaired on load: a recoverable state should never be presented as a broken site.
+
+_The public arena only. **Restart start-arena.bat** - a page newer than the service now says so plainly instead of failing as "unauthorized"._
+
+---
+
+## v5.12.0
+
+**v5.12.0 - Wind Arena becomes a public web page. No install, no account, no download - just play.**
+
+### 🌍 The game leaves the dashboard
+- The arena now runs as its own site, served by the master. Anyone with the link plays **immediately** - no Wind instance, no sign-up, nothing to install. Asking someone to download a trading bot before they can try a game was the wrong first step.
+- One codebase, not two: the public app resolves the **canonical engine** in `arena/engine/src` directly, so the mirror that used to drift cannot.
+
+### 🔒 A sidecar, not a feature of the bot
+- Its own process, its own port, its own database. It **refuses to boot** if its data directory resolves anywhere near the trading master's, if the file it is told to open is named bot.db, or if that file contains trade-engine tables. A misconfigured environment variable is the one mistake that would turn a game bug into a trading incident, and boot is the only place to catch it.
+- **Zero npm dependencies.** On a public service holding wallet identities, the shortest dependency list is a security property, not tidiness.
+- The page and the api share **one origin**, which is what makes the login proof's origin binding a real control rather than decoration.
+
+### 🪪 Your address is your account, and nothing else leaves
+- Signing in is a wallet signature over a payload the **server** builds and rebuilds - so a signature harvested elsewhere, made for another purpose, another chain or another origin, cannot open a session here. Addresses that could never sign are refused before verification rather than after.
+- Public pages show a **peppered handle**, never a wallet address. Publishing a leaderboard next to an address would publish every player's balance beside their name.
+- The database has **no column that could hold a payout destination** - the constraint is in the schema, so custody is impossible by construction rather than by policy.
+
+### 💾 The Brawler you played before signing up
+- Your save comes with you: name, birth, roster and the shape of your build. Level is bounded by what the daily allowance could actually have produced, currencies and ranks are zeroed, and the **destiny seed is re-minted** with a server nonce - the engine runs in your browser, so a seed you chose is a destiny you shopped for.
+- Everything the import changed is listed back to you. A silent rewrite at the moment someone finally signs up is how you lose them.
+
+_A new launcher: **start-arena.bat**. Backend - effective at reboot._
+
+---
+
+## v5.11.0
+
+**v5.11.0 - The arena fills the screen, wears the desert, and stops sending you to the wrong place.**
+
+### 🖥️ Edge to edge
+- The arena now runs **full bleed** - no dashboard chrome, no side gutters, on any touch device and in either orientation. The dock clearance moved inside the world, so pulling to refresh no longer reveals a dark band behind the page and the top bar does not come back afterwards.
+- The tab strip scrolls on its own with a fade at the edge instead of dragging the whole page sideways. Choosing a tab **brings that tab into view** and scrolls the strip to it, so the row you tapped is the row you can see.
+
+### 🚪 "Back to the cell" goes to the cell
+- After a fight it returned you to the arena instead. It now lands on the cell, where the thing you just earned actually is.
+
+### 🎨 It looks like a place now
+- Carved gauges, a struck-coin Essence counter, and medallion portraits, on a desert palette. The stray violet that belonged to the trading dashboard is gone - the arena is not a chart.
+
+### 🩸 Your day, visible before you spend it
+- Chips show fights left and defeats left, and the **five controls that can be disabled now say why** - out of fights, out of defeats, already met today, too far below you, not your turn. A dead button with no reason is indistinguishable from a bug.
+
+_Frontend - hard-refresh._
+
+---
+
+## v5.10.0
+
+**v5.10.0 - The phone stops losing your place, and every control is big enough to hit.**
+
+### 📍 Changing menus no longer throws you back to the top
+- Every page remembers where you were. Going **back** returns you to the exact scroll position you left; opening a page fresh starts you at the top, which is what you actually wanted both times.
+- The restore happens **before the browser paints**, so there is no visible jump. Pages whose content arrives asynchronously used to clamp that first restore to zero - the position is now re-applied while the page is still growing, and **abandoned the instant you touch the screen**, so it can never fight you for the scrollbar.
+
+### 👆 44px targets without bigger controls
+- Dense chip rows have to stay visually small - the top bar only fits at 320px because its chips are tight. The **hit area** is now stretched to the 44px touch minimum with a pseudo-element that costs nothing in layout, so a 26px chip is a 44px target. Width never grows beyond the control itself, so neighbours in a tight row cannot steal each other's taps.
+- Buttons get a 44px floor on touch devices. None of the app's main verbs should be a 36px sliver on a phone.
+
+### 📱 Full screen means full screen
+- The arena drops the dashboard chrome on **any touch device**, not merely a narrow one. Keying it to a breakpoint was wrong: a phone in landscape is 852px wide and a tablet is wider - both are past the breakpoint, so the top bar came straight back on exactly the devices the mode exists for. Pointer type is the honest question, and a mouse keeps its chrome at every size.
+
+### 🧹 Overflow, hunted down
+- The horizontal drift on phones was the **top bar**, not the pages: its row measured 453px inside a 367px screen. The row was made to fit first and locked afterwards - locking first would simply have clipped the account menu.
+
+_Frontend - hard-refresh._
+
+---
+
+## v5.9.0
+
+**v5.9.0 - The arena day has an end, and the Storm Trials stop trusting what they are handed.**
+
+### ⏳ Six fights, three defeats, whichever comes first
+- A Brawler gets **6 bouts a day**, and the day also ends on the **3rd defeat**. Two limits, not one: the fight cap measures how much you played, the defeat quota measures how badly - and it is the second that gives punching above your weight a real cost.
+- Days are **absolute UTC**, so the reset is a wall clock everyone shares rather than a rolling timer you could game by fighting later.
+- You may meet a given opponent **once per day**. The chips on the arena show both counters, and when the day closes the message **names which limit closed it** - being blocked with fights still showing would otherwise look like a bug.
+
+### 🎯 Beating someone far below you is not training
+- A win against an opponent more than two levels beneath you now pays the **losing** XP. Farming a weak opponent was the shortest path up the ladder and the least interesting one.
+
+### 🛡️ The Storm Trials stop storing whatever arrives
+- Registration **rebuilds** each entry from a whitelist instead of filtering the object it was handed. An unknown field - a 90 kB block of text, say - used to ride along inside the request and get stored verbatim, turning a public POST into a multi-megabyte write.
+- Measured on a full field: the stored blob went from **5.53 MiB to 0.009 MiB**, and resolving a day from **170 ms to 11.1 ms**.
+- A day that could never resolve is now healed rather than left pending, an entry can no longer be forged by escaping its own id, and a Brawler must be one a real player could actually own - stats are checked against the budget its level could have earned, so a level-3 fighter with every stat at the cap no longer wins every bracket it enters.
+
+_Frontend - hard-refresh. Backend - effective at reboot._
+
+---
+
+## v5.8.1
+
+**v5.8.1 - The books stop hiding money, the Equity card tells the truth, and the bot gets its real name.**
+
+### 🧾 Recovered trades were vanishing from the daily books
+- The daily statistics deliberately skip the sync's *_PARTIAL rows to avoid double-counting - but the PnL sync writes its OWN recovered legs with that suffix, then retypes their twin precisely so the merge cannot double-count them. Excluding them blanket-style therefore dropped that money from **both** sides.
+- Measured live before the fix: a day worth \$0.1615 booked as \$0.084 on one instance, and **\$1,321.22 hidden** on the master. Recovered rows are now counted exactly once.
+
+### 💰 The Equity card shows the real portfolio again
+- In Multi-Assets mode the card was pinned to the fixed base capital. It now shows live portfolio worth - with BTC posted as collateral that figure legitimately moves with BTC, and pretending otherwise was the wrong kind of stable.
+
+### 🎯 Pattern Trader opens wider
+- Concurrent trades can go to **30**, and a value set outside the presets is kept and shown as custom instead of being silently snapped back.
+
+### 🏷️ It is a Trading AI, not a bot
+- The engine is renamed across the site, the app title, the login screen, the PWA manifest and POSITIONING - "bot" undersold what it is.
+
+_Backend - effective at reboot. Frontend - hard-refresh._
+
+---
+
+## v5.8.0
+
+**v5.8.0 - The master learns to tell its own story on X, one trade at a time.**
+
+### 🐦 Live-trade tweets, with a card
+- The master can post its **own opens and closes** to X, each with a generated 1280x590 card and a plain-language close reason. Off until credentials exist; every feed has its own switch.
+
+### 🔑 OAuth2, and a token that cannot be lost
+- Both auth modes are supported now. OAuth2 refresh tokens **rotate on every refresh**, so each new one is persisted immediately - losing a rotated token strands the account until the operator redoes the whole flow.
+- Connecting from the UI now **merges** into the credentials file instead of overwriting it: a connect can no longer wipe a working auth mode.
+
+### 🚦 Limits X does not let anyone lift
+- Measured 2026-08-25: the 50th original post of a rolling day is refused with a 403 - an **account** ceiling for unverified accounts, not an API one, and it applies to every feed including closes. The poster now knows this, backs off with strikes, and **keeps queued trades queued** rather than dropping them.
+- Cost is part of the decision: a post carrying a link is billed far higher than one without, so links are opt-in per feed.
+
+### 📢 Broadcast a CTA by hand
+- The Socials page lists the full CTA rotation, and any variant can be posted to Discord or X on demand.
+
+### 🖼️ Discord embeds get coin logos
+- Thumbnails are resolved **server-side** before posting (Discord silently drops a 404), with multiplier contracts like 1000PEPE resolving to their real base coin.
+
+_Master-only. Backend - effective at reboot._
+
+---
+
+## v5.7.2
+
+**v5.7.2 - The phone stops sliding sideways.**
+
+### 📱 The whole shell was scrolling horizontally
+- On a phone, swiping left or right moved the entire dashboard and revealed bare bands beside pages that paint their own background. The cause was not the page: the **top bar** held more chips than fit - measured **453px of content against 367px of space** - and that overflow propagated to the scroll container.
+- The row now fits: tighter spacing, the trading status keeps its dot and drops its label below 640px, and the Catalyst shortcut steps aside under 360px so the **account menu can never be pushed off-screen**. Verified with the account menu fully reachable at 320, 360, 390, 430 and 1280px.
+- The container is locked as well, so a future overflow can shift nothing.
+
+_Frontend - hard-refresh._
+
+---
+
+## v5.7.1
+
+**v5.7.1 - One arena for the whole network: a single daily draw, hosted by the master.**
+
+### 🏆 Federated Storm Trials
+- Every instance may enter **one Brawler per day** into a single network-wide bracket the master runs for everyone. The master publishes a hash of its server seed **before** registration opens and reveals the seed only at resolution, so it cannot re-aim the draw once it can see the field.
+- The bracket seed folds in each entrant **and a hash of the exact fighter registered** - swapping a Brawler after signing up would change the published seed. Every bout keeps its own seed, so anyone can re-run it and check the result.
+- A day with fewer than two entrants is **abandoned, never faked**, and no bot is ever crowned.
+
+### 🌍 A global board nothing can talk its way onto
+- The ranking is built **only** from trials the master resolved itself. There is deliberately no submit-my-standing endpoint. You are listed for advancing, never for showing up.
+
+### 🛡️ Hardening
+- A draw whose window passed unattended used to be **unresolvable forever**; a timer now settles it. Registrations are rebuilt field-by-field from a whitelist, so a public post can no longer write megabytes into the database. Fighters must be ones a real Brawler could own. Instance identifiers are no longer published, and a registration that fails to save now says so instead of reporting success.
+
+_Master-only. Backend - effective at reboot._
+
+---
+
+## v5.7.0
+
+**v5.7.0 - Wind Arena: the preview was a fight. This is a game.**
+
+### ⚔️ From a duel to a career
+- v5.6.0 shipped the foundation - a deterministic engine and a battle scene. This turns it into something you come back to: levels and rewards after every bout, wounds that need resting off, a collection to fill, and a reason to fight tomorrow.
+- **The Storm's Path** - a Brawler's entire future is rolled the moment it is named, derived from its seed and never stored, so it cannot be re-rolled. Anyone holding the seed can read what a Brawler will become, which is what makes one worth buying.
+
+### 🏛️ The Cell
+- Six rooms: your Brawler and its attributes, the arena, trials, squadron wars, apprentices and the shop. Your collection shows the silhouette of what you have **not** earned yet, and every past bout is replayable from its seed.
+
+### 🪙 Two currencies
+- **Combat Essence** on every fight, buyable with \$WINDH, spent on rest and re-rolls. **Gold Nuggets** never drop from an ordinary bout - they come from milestones, 50 fixed objectives and a weekly rotation.
+
+### 🏆 Trials, squadrons and apprentices
+- Daily bracket trials with nine ranks climbed only by winning. **7-vs-7 squadron wars**, first to four, where the order of your line-up is the decision. Apprentices pay their mentor as they grow - capped per day, because an uncapped referral is a farm.
+
+### 📱 On a phone it is a game, not a page
+- The arena takes the **whole screen**: the trading chrome steps aside, the parchment runs edge to edge and down to the bottom, and the bout scrolls itself into view when it starts. The room tabs still swipe, without a scrollbar drawn under them. On a desktop it stays a framed card inside the dashboard.
+
+### ⚖️ Fairness as a feature
+- The engine is shared byte-for-byte between server and browser and both copies are tested against each other. Wagers are not live yet: this ships the foundation.
+
+_Frontend - hard-refresh. Backend - effective at reboot._
+
+---
+
 ## v5.6.0
 
 **v5.6.0 — A new home for the community, a chat that belongs to everyone, and the master learns to throw a party.**
