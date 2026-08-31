@@ -5,6 +5,81 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.17.0
+
+**v5.17.0 - The rooms of the arena: a pulse bar, a stable, a training yard, and thirteen UX fixes.**
+
+### 🪙 The pulse bar
+- Between the menu and the first card: your **purse on the left** (ember Essence, struck-gold Nuggets, and **$WINDH glued to the right** as the premium token - live balance once the mint is configured) and a **champion search** on the right. Find any fighter by name, scout their owner's stable, and **challenge straight from the card** when they stand on today's rivals shelf.
+
+### 🎒 Brawlers - the quartermaster's wing
+- Your champions hang as **bronze-framed plaques**: rank, an XP gauge, and "tap to fight with this one" - the account holds **three champions**, and the empty slots ARE the forge.
+- The **item vault** sits on wooden shelf rails - every piece named, the dot marks what you carry - beside the purse and the Marketplace's three waiting wings (listing opens with M3 escrow).
+
+### 🪪 Player - the ledger
+- Game settings (replay pace, a Calm mode for battle flourishes), the **brass identity plate**, reveal-your-recovery-phrase, sign out everywhere, forget this device - and the **two-factor wax seal**: dry when off, pressed green when armed.
+
+### 🏋 The training yard
+- **Train**, left of Rest: one session at a time, the clock scales with your power (seconds ticking in the button), **skippable for Nuggets**. It pays Essence, a full recovery, and sometimes a **find for your Collection** - never raw stats or XP, which stay behind the destiny path where wager fairness lives.
+
+### ✨ Endings become ceremonies
+- The stage strikes itself when the spoils land; **VICTORY!** shouts under a golden trophy and turning rays while your **XP gauge fills before your eyes** - and a beaten champion sinks to a knee as **his helm rolls off into the sand**.
+
+### 🔧 Thirteen UX fixes, the sharpest five
+- **Mentor links from the public arena were 404s** - every shared link now lands.
+- Retire lied in server mode (it only wiped the local mirror) - hidden until a real server retire exists.
+- Fight history and the W-L record now read the **server's truth for the active champion** - no more borrowed records after a switch.
+- Defences fold into Fight history with **NEW badges** instead of a notice card.
+- Locked Collection pieces hide behind a **"show locked"** tick - day one is no longer a wall of grey.
+
+_Frontend - hard-refresh. The public arena picks it up on its own._
+
+---
+
+## v5.16.0
+
+**v5.16.0 - The fighters, drawn: poses, faces, signatures, a victory ceremony - and the first item in 3D.**
+
+### ⚔️ Original vector warriors
+- The CC0 sprite sheets retire. Every brawler is an **original desert warrior** drawn from its look - cel outline, four skin tones, war paint, strapped-and-riveted plate - with **faces that carry the state**: determined, grim on a hit, X-eyed when KO'd, closed-happy in victory.
+- Poses are **drawn, not slid**: bent knees on the lunge, guard raised at the impact, streaming cloth, fist to the sky on the win. Each of the **Ten Legends wears a signature** - Boreas's fur mantle, Old Squall's beard, Tempest Nyx's crescent - readable across the sand.
+- Every mini-portrait carries its own **patch of desert sky** tinted to the fighter's hue, cover-cropped inside round frames.
+
+### 🏆 The battle ends like a show
+- A **cloth banner drops** from the top beam for the winner and a **lamp pools light** on their patch of sand. Comic-book **stars** mark every landed blow and circle the fallen.
+- Fighters **enter the stage**, carry their weapons in hand (mid-bout swaps visible, a disarm sends the blade flying), and below a third of their health they **visibly carry the fight** - slumped shoulders, scuffed plate, read straight off the frame.
+
+### ◇ The first item off the forge, in the round
+- The **Monsoon Maul**, modelled in three dimensions and rendered by a **zero-dependency turntable** - ~120 lines of canvas, no three.js on what is also the wallet page. Drag to turn; it loads only when you open it, from the ◇ 3D chip on the vault tile or the Marketplace's Items wing.
+
+_Frontend - hard-refresh. The public arena picks it up on its own._
+
+---
+
+## v5.15.0
+
+**v5.15.0 - The server holds the rules, and the arena goes multiplayer.**
+
+### ⚖️ The fight loop leaves the browser
+- Fights, the daily allowance, level-up picks and the Storm Trials are now **resolved by the arena service** from state no player can edit. Your browser **replays the returned seed** for the animation - same engine, same bytes - so every bout stays re-checkable, which is the property wagers will stand on.
+- Seeds are **minted at fight time** (a match id plus a server nonce, resolved in the same request): nobody can shop for a winning outcome. Level-up offers are **derived from your sealed destiny**, never stored - a restart changes nothing.
+
+### 🎭 The first truly multiplayer surface
+- The daily Trials **seat other players' brawlers** as shadows. Being drawn costs a defender **nothing** - no condition, no allowance - capped at **3 draws a day**, and a defence that wins pays its absent owner **+1 XP**, credited while they sleep.
+- **Rivals stand in the arena picker**: duel other players' champions directly - same ledger, same caps, and your victim's day is never spent. A **network ladder** ranks every brawler on the service, handles only.
+
+### 🔒 A second lock on the door
+- **Two-factor sign-in**: TOTP codes from any authenticator app, armed only by a live code, replay-burned counters, and **eight recovery codes** stored as hashes that spend on use. The gate sits **after** the signature check - an anonymous caller never learns whether it is on.
+- An account now holds **up to 3 champions**; the lossy once-only import doctrine stands.
+
+### 🔎 And the service learns some manners
+- **Champion search** by name, a **$WINDH balance** proxy (the page's CSP keeps the browser off third-party hosts - the service asks the chain, cached, honest dash until the mint is configured), and additive schema migrations **v2 → v6** proven against real files.
+- **56 new service tests** (131 total), written from the cheater's chair: seed shopping, allowance dodging, defender farming, address leaks.
+
+_Arena service - restart start-arena.bat once. The page follows on its own._
+
+---
+
 ## v5.14.0
 
 **v5.14.0 - The arena gets its depth: a dark table, a living stage, and every room dressed.**
