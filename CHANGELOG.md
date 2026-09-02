@@ -5,6 +5,78 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.20.0
+
+**v5.20.0 - The vaults open, the wars are watchable, and the gates tell the truth.**
+
+### 🎒 Three vaults, NFT-ready
+- The item vault splits into **Weapon, Skill and Companion vaults** - each its own card with the orange band, its count, its shelf. Tap a piece for its options: **Attach to your champion / Detach** (real, with the carry limits explained) and **Sell on the Wind Marketplace**, waiting for M3. A forged-in shield says so.
+- The wooden shelf rails are gone; the tiles stand on their own.
+
+### ▶️ Watchable brackets and wars
+- **Every Storm Trial match is a button**: mini-portraits of both fighters, the loser struck through, the crown on the champion - and a tap replays that match on the sand, same engine, same seed.
+- **Every bout of a squadron war**, likewise.
+
+### 🛡️ Squadron and Apprentices, dressed
+- Squadron: the level gate as a plaque with a gauge; the banner raised **live as you type** (the pennant takes the name's colours); the banner's plaque with its tallies as coins; the battle line as tiles with round portraits; the war report chalked large.
+- Apprentices: the mentor link on a **brass plate** (tap to copy), the tally struck as coins, the mentor in a medallion, and "what mentoring pays" as a parchment contract.
+
+### 🔧 Honest gates, and a phone
+- After three defeats the sand closes for the day: the Quick duel tooltip and the post-fight funnel **say so** instead of "too hurt", and the funnel no longer sells a Rest that cannot reopen the sand.
+- The cell's action row wraps on a phone instead of clipping Retire; the Refer & Earn link no longer 404s on the public arena.
+
+_Frontend - hard-refresh._
+
+---
+
+## v5.19.0
+
+**v5.19.0 - The sky has weather, the fight has a face-off, and the page arrives where you look.**
+
+### 🌤️ Skies with weather
+- Every bout is fought under **the hour written in its seed** - noon, dawn, dusk or storm - so a replay is fought under the light it was fought under.
+- A **storm-seeded bout gets its storm**: a far bolt cracking over the wall every few breaths, a pale flash across the sky, harder slanted gusts. A **dusk bout wakes fireflies** over the arches.
+- The companions - falcon, wolf, bison - finally wear the fighters' cel outline.
+
+### 🆚 The face-off
+- Every bout opens on a **VS card**: both medallions slide in with names and opening weapons, the VS stamp claps down, then it lifts for the first blow. The announce and the playback lead are the same number by construction - no blow lands under the card.
+- The HP plates and the fight log hold back while the card stands: no spoiler of the first blow, and room for the medallions on a phone.
+- The crowd cheers the final banner, not only the crits.
+
+### ✨ Ceremonies of the small kind
+- **The forge shows the whole fighter**: name a Brawler and he stands full-figure in his own patch of desert - a silhouette until the name is valid, his look shifting with every letter.
+- **The destiny deal is dealt**: the three cards fall from the deck and turn to face you one after another.
+- Rest flashes the condition bar once, green.
+
+### 🧭 The page arrives where you look
+- Every funnel step positions the page the same way: a dare (Quick duel, Fight again, a rival, the scout window, the roster below the panel) lands on the VS panel; a level-up lands on the destiny deal once the ceremony is done; birth lands on the room's front. "Enter the Trial" and "your apprentices" arrive like the tabs do.
+- Calm mode and reduced motion keep every new animation still.
+
+_Frontend - hard-refresh._
+
+---
+
+## v5.18.0
+
+**v5.18.0 - Wind Arena stands on its own: the game leaves the trading hub, and a search lands on a champion's cell.**
+
+### ⚔️ The arena is its own game
+- The Trading Hub carries **no shortcut to the arena** any more - no Games switch, no rail entry, no command-palette line, no /arena route in the dashboard. Wind Arena lives at its own public address; the Marketplace's arena wing is the one pointer left, and it links out.
+- The dashboard bundle no longer ships the arena at all.
+
+### 🔭 Scouting lands on the cell
+- Tap a champion in the pulse-bar search and you land on **his cell, laid open**: medallion, level, power, health, the four attribute gauges, and what he carries (weapons, shield, skills, companion) - read-only, everything his owner sees minus the levers.
+- **Challenge in one tap** when he stands on today's rivals shelf; an honest line when he does not.
+- **The rest of the stable waits beneath** - the owner's other champions as tap-to-scout tiles.
+- Under the hood the search now hands over the owner's **whole stable** on any hit; a name match used to hide the siblings. 132 service tests.
+
+### 🪙 Shop & Objectives
+- The Shop tab now says what it holds: **Shop & Objectives**.
+
+_Frontend - hard-refresh. The arena service carries the search change from its next restart (already live on the master)._
+
+---
+
 ## v5.17.0
 
 **v5.17.0 - The rooms of the arena: a pulse bar, a stable, a training yard, and thirteen UX fixes.**
