@@ -5,9 +5,66 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
-## v5.20.0
+## v5.9.23
 
-**v5.20.0 - The vaults open, the wars are watchable, and the gates tell the truth.**
+**v5.9.23 - The gate: a new masthead, first steps for a fresh Brawler, and the pace where you need it.**
+
+### 🏛 The gate
+- **A new masthead**: the storm rolling in from the west over the arena's own wall, a wooden sign hung from the gate beam, the bolt striking the plank, two Legends armed at the gate, braziers lit on the pillars.
+
+### 🧭 First steps and small doors
+- A **fresh Brawler** sees the road ahead under the action row - the first duel, the reward that follows, the Trials - until the first bout is on the record.
+- The **tab strip** fades on both edges once it has moved, and brings the active tab into view on arrival; the sign-in push steps aside the moment you start forging a name.
+- **Pace 1x / 2x** in the fight bar and in the watch window; the hurt-without-Essence dead end gets a door to the Shop; Rest reads "Rest - 15".
+- Medals and seals **speak to screen readers** again.
+
+_Frontend - hard-refresh._
+
+---
+
+## v5.9.22
+
+**v5.9.22 - The sand has a voice: sound, a career on the wall, defences you can replay, and links anyone can watch.**
+
+### 🔊 Sound and feel
+- A **synthesized cue book** - blows, blocks, crits, disarms, swaps, heals, the KO, the VS stamp, the fanfare - built in your browser, nothing downloaded. Haptics on phones, a shake on the heavy hits.
+- **Sound** and **Calm** switches in the Player tab; the fight bar has its own mute.
+
+### 📜 Career and defences
+- **Career card**: bouts, win rate, best streak, crits, damage dealt, trials won, legends beaten, objectives, wars won - the record on the wall, before any setting.
+- **Defences you can replay**: the sidecar keeps each defence's seed and both fighters' specs (schema v7), so an away game in your history replays exactly as it was fought.
+
+### 🔗 Links anyone can watch
+- **Share a bout, share a champion**: public links that open a watch window - no account needed - with sound, pace and the seed to verify.
+- The landing shows the **latest bouts** and **the ladder**, tap to watch or to scout a champion; shared links unfurl with a card on Discord and X.
+- The arena is **installable** - a PWA with its own icon.
+
+_Sidecar - effective at reboot (the schema v7 migration runs on start). Frontend - hard-refresh._
+
+---
+
+## v5.9.21
+
+**v5.9.21 - Painted by the same hand: the armoury, the disciplines and every glyph, drawn for real.**
+
+### 🗡 The armoury, drawn for real
+- **Sixteen weapons and the shield** are painted pieces now - steel, bronze, wood, leather, glass and ember, three flats and the one dark outline the whole room shares - instead of silhouettes. Each carries a line of lore and a rarity.
+- **The item window**: tap any weapon, skill or companion anywhere - vault tiles, collection sockets, destiny cards, training finds, the shelves - for its art, numbers, lore and rarity ring.
+- **Shelves**: the Armoury, the Disciplines and the Beasts sit on shelves in the Brawlers tab and in the hub Marketplace's Wind Arena wing, the whole roster on display.
+
+### 🎨 One hand for everything
+- **Fighters shaded**: an ink wash on the turned side and a glint on the lit rim of every limb; plate seams, a real buckle, skirt pleats, cape folds, boot cuffs; five helms enriched (nasal, cheek guards, jewels, hood hem, headband bead).
+- **Eighteen skill emblems repainted** from line drawings to struck coins, each tinted by its school - wind, storm, stone, blood.
+- **Forty house glyphs** replace every OS emoji - tabs, coins, packs, shields, crowns, locks, links, the lot - so the room reads the same on iPhone, Android and Windows.
+- **Podium medals** on their ribbons for the three rankings, **wax seals** on objectives, **attribute emblems** (heart, anvil, feather, hourglass) on every gauge, an **empty-sand vignette** where a list is still blank, a weed that rolls and a shine on gold.
+
+_Frontend - hard-refresh._
+
+---
+
+## v5.9.20
+
+**v5.9.20 - The vaults open, the wars are watchable, and the gates tell the truth.**
 
 ### 🎒 Three vaults, NFT-ready
 - The item vault splits into **Weapon, Skill and Companion vaults** - each its own card with the orange band, its count, its shelf. Tap a piece for its options: **Attach to your champion / Detach** (real, with the carry limits explained) and **Sell on the Wind Marketplace**, waiting for M3. A forged-in shield says so.
@@ -29,9 +86,9 @@ _Frontend - hard-refresh._
 
 ---
 
-## v5.19.0
+## v5.9.19
 
-**v5.19.0 - The sky has weather, the fight has a face-off, and the page arrives where you look.**
+**v5.9.19 - The sky has weather, the fight has a face-off, and the page arrives where you look.**
 
 ### 🌤️ Skies with weather
 - Every bout is fought under **the hour written in its seed** - noon, dawn, dusk or storm - so a replay is fought under the light it was fought under.
@@ -56,9 +113,9 @@ _Frontend - hard-refresh._
 
 ---
 
-## v5.18.0
+## v5.9.18
 
-**v5.18.0 - Wind Arena stands on its own: the game leaves the trading hub, and a search lands on a champion's cell.**
+**v5.9.18 - Wind Arena stands on its own: the game leaves the trading hub, and a search lands on a champion's cell.**
 
 ### ⚔️ The arena is its own game
 - The Trading Hub carries **no shortcut to the arena** any more - no Games switch, no rail entry, no command-palette line, no /arena route in the dashboard. Wind Arena lives at its own public address; the Marketplace's arena wing is the one pointer left, and it links out.
@@ -77,9 +134,9 @@ _Frontend - hard-refresh. The arena service carries the search change from its n
 
 ---
 
-## v5.17.0
+## v5.9.17
 
-**v5.17.0 - The rooms of the arena: a pulse bar, a stable, a training yard, and thirteen UX fixes.**
+**v5.9.17 - The rooms of the arena: a pulse bar, a stable, a training yard, and thirteen UX fixes.**
 
 ### 🪙 The pulse bar
 - Between the menu and the first card: your **purse on the left** (ember Essence, struck-gold Nuggets, and **$WINDH glued to the right** as the premium token - live balance once the mint is configured) and a **champion search** on the right. Find any fighter by name, scout their owner's stable, and **challenge straight from the card** when they stand on today's rivals shelf.
@@ -108,9 +165,9 @@ _Frontend - hard-refresh. The public arena picks it up on its own._
 
 ---
 
-## v5.16.0
+## v5.9.16
 
-**v5.16.0 - The fighters, drawn: poses, faces, signatures, a victory ceremony - and the first item in 3D.**
+**v5.9.16 - The fighters, drawn: poses, faces, signatures, a victory ceremony - and the first item in 3D.**
 
 ### ⚔️ Original vector warriors
 - The CC0 sprite sheets retire. Every brawler is an **original desert warrior** drawn from its look - cel outline, four skin tones, war paint, strapped-and-riveted plate - with **faces that carry the state**: determined, grim on a hit, X-eyed when KO'd, closed-happy in victory.
@@ -128,9 +185,9 @@ _Frontend - hard-refresh. The public arena picks it up on its own._
 
 ---
 
-## v5.15.0
+## v5.9.15
 
-**v5.15.0 - The server holds the rules, and the arena goes multiplayer.**
+**v5.9.15 - The server holds the rules, and the arena goes multiplayer.**
 
 ### ⚖️ The fight loop leaves the browser
 - Fights, the daily allowance, level-up picks and the Storm Trials are now **resolved by the arena service** from state no player can edit. Your browser **replays the returned seed** for the animation - same engine, same bytes - so every bout stays re-checkable, which is the property wagers will stand on.
@@ -152,9 +209,9 @@ _Arena service - restart start-arena.bat once. The page follows on its own._
 
 ---
 
-## v5.14.0
+## v5.9.14
 
-**v5.14.0 - The arena gets its depth: a dark table, a living stage, and every room dressed.**
+**v5.9.14 - The arena gets its depth: a dark table, a living stage, and every room dressed.**
 
 ### 🌌 Figure on ground
 - The whole world now rests on a **dark roasted-brown table** - the parchment cards float on it instead of melting into a same-colour page. Parchment grain, an edge vignette, and a board shadow on large screens finish the trick.
@@ -181,9 +238,9 @@ _Frontend - hard-refresh. The public arena picks it up on its own._
 
 ---
 
-## v5.13.0
+## v5.9.13
 
-**v5.13.0 - Signing up for Wind Arena creates your $WINDH address, in your browser, in front of you.**
+**v5.9.13 - Signing up for Wind Arena creates your $WINDH address, in your browser, in front of you.**
 
 ### 🔑 Twelve words, and they are really yours
 - Creating an account generates a **Solana address in the browser**. We receive the public half and nothing else. The derivation is the standard one - BIP-39 to `m/44'/501'/0'/0'` - so the same twelve words typed into **Phantom or Solflare give the same address**. Your account is portable out of our hands on the day you make it, which is the only honest version of "non-custodial".
@@ -204,9 +261,9 @@ _The public arena only. **Restart start-arena.bat** - a page newer than the serv
 
 ---
 
-## v5.12.0
+## v5.9.12
 
-**v5.12.0 - Wind Arena becomes a public web page. No install, no account, no download - just play.**
+**v5.9.12 - Wind Arena becomes a public web page. No install, no account, no download - just play.**
 
 ### 🌍 The game leaves the dashboard
 - The arena now runs as its own site, served by the master. Anyone with the link plays **immediately** - no Wind instance, no sign-up, nothing to install. Asking someone to download a trading bot before they can try a game was the wrong first step.
@@ -230,9 +287,9 @@ _A new launcher: **start-arena.bat**. Backend - effective at reboot._
 
 ---
 
-## v5.11.0
+## v5.9.11
 
-**v5.11.0 - The arena fills the screen, wears the desert, and stops sending you to the wrong place.**
+**v5.9.11 - The arena fills the screen, wears the desert, and stops sending you to the wrong place.**
 
 ### 🖥️ Edge to edge
 - The arena now runs **full bleed** - no dashboard chrome, no side gutters, on any touch device and in either orientation. The dock clearance moved inside the world, so pulling to refresh no longer reveals a dark band behind the page and the top bar does not come back afterwards.
@@ -251,9 +308,9 @@ _Frontend - hard-refresh._
 
 ---
 
-## v5.10.0
+## v5.9.10
 
-**v5.10.0 - The phone stops losing your place, and every control is big enough to hit.**
+**v5.9.10 - The phone stops losing your place, and every control is big enough to hit.**
 
 ### 📍 Changing menus no longer throws you back to the top
 - Every page remembers where you were. Going **back** returns you to the exact scroll position you left; opening a page fresh starts you at the top, which is what you actually wanted both times.
