@@ -5,6 +5,24 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.26
+
+**v5.9.26 - Drawn for the sand: a fight you can read, busts instead of headshots, a lower gate.**
+
+### ⚔ The fight, readable
+- **Damage lands on the fighter**: numbers rise from the struck chest - crits big and gold, blocks small and grey, heals green - and the event word (MISS, DODGE, RIPOSTE) floats above the head.
+- **Health bars read as health**: green, amber under 55%, red under 25%, with a pale ghost that drains a beat later so the size of a blow shows.
+- The **wall steps back** and the fighters grow a fifth; the ring is a lit circle of sand with a rim; the skull, the bones and the axe in the middle are gone.
+
+### 🖼 Every mini on a card
+- **Busts, not headshots**: every champion portrait - medallions, cards, ladders, scouting - shows head, shoulders, chest and arms.
+- Weapon and companion minis stand on a **rarity-tinted ground** with an inset frame and a shadow; the Gold Gem coin and its three pack arts; Rest is a campfire, not a warning sign.
+- The **masthead** comes in three compositions - desk, tablet, phone - with a proper thunderbolt between WIND and ARENA, the sun clear of the brazier, and every canvas lower: 140 px on a desk, 208 on a phone.
+
+_Frontend - hard-refresh._
+
+---
+
 ## v5.9.25
 
 **v5.9.25 - The vault, the gems and the codes: the arena's ledger grows up.**
