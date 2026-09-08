@@ -5,6 +5,27 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.25
+
+**v5.9.25 - The vault, the gems and the codes: the arena's ledger grows up.**
+
+### 💎 Gold Gems and bought bouts
+- A third coin, **Gold Gems**, minted against $WINDH in the Shop (preview, like Essence). Five gems reload **three more bouts** when the day is spent - up to three packs a day, and a bought bout may be lost, so three defeats do not lock them out.
+- The rule lives in the shared engine; the public sidecar keeps the ledger on the day's row, so no client can vote itself an endless day.
+- **The gems live on the server.** A wallet row per account and a signed ledger line for every movement - a voucher, a Shop pack, a pack of bouts. Bought with $WINDH, the balance belongs where the money went, not in a phone's storage: a wiped device or a swapped one no longer takes the gems with it. A pack of bouts is now paid from that row, in the same transaction that opens the day.
+
+### 🎟 Codes
+- **Vouchers**: a code typed at the bottom of the Shop pays gems, nuggets or essence, once per account. The sidecar keeps the redemption ledger; the local game remembers on the save. First codes: **NUGGETS400** and **NUGGETS500**.
+- A code redeemed before the wallet existed is **replayed into it once** on the first start - the redemption row is the proof, the ledger line the receipt - and a device that never saw a redemption pays its nuggets and essence out exactly once.
+
+### 🎒 The vault, server-side
+- Every Brawler on the public arena now owns a **vault**: a piece won past the hands' capacity waits there instead of vanishing, and a level-up card is never refused for full hands again.
+- A **loadout route**: what the owner attaches from the vault is what the server fields, in that order, for duels, Trials and the rivals' shelf. Sixteen sidecar tests cover the packs, the wallet, the codes and the vault.
+
+_Sidecar - effective at reboot (schema v7 to v11 migrates on start, redemptions replayed). Engine mirror in sync._
+
+---
+
 ## v5.9.24
 
 **v5.9.24 - Omni Dynamics: Patterns and TradFi together, on every market the exchange lists.**
