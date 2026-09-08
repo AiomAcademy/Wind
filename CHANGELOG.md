@@ -5,6 +5,29 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.27
+
+**v5.9.27 - Read before you swing: fair matches, odds everywhere, the vault in your hands.**
+
+### 🎯 Fair matches
+- **Quick duel is a fair match**: sixteen sampled bouts per foe, the Legend nearest six-in-ten for your loadout, never a walkover that pays like a defeat. Power is a price, not a threat.
+- **Odds on every card** - Legends, rivals, the VS screen, scouting, a shared champion - one pill from favoured to brutal, walkovers behind the contests.
+- **Squadron wars read before the horn**: the next banner, its power against yours, who meets whom at each position with its odds, the war's own odds; the banners hold still for a day.
+
+### 🎒 Brawlers
+- **Champion Stuff**: what the fighting champion carries, in swing order, empty slots drawn. **Auto-stuff** picks the best loadout from the vault by the engine's own verdict and re-picks as you win pieces; a hand on the vault switches it off.
+- One place to attach and detach - the vaults - and the item window does it too. On the public arena the loadout now reaches the server.
+- The greyed **Quick duel sells the pack**: five gems, one tap, three bouts. **Vouchers** at the bottom of the Shop.
+- On the public arena the page shows the **account's gems**, not this device's: the balance comes down with the sign-in, a pack or a code shows what the ledger says, and a code this save never saw pays its nuggets and essence once.
+
+### 🧹 The audit passes
+- Results arrive in view; the Trial bracket is dealt round by round and scrolls on a phone; the war report keeps its odds and marks the deciding bout; reward cards say what they change; spoils fold past three objectives; Provably fair lives on the Player tab; tabs and settings at 40 px; pills above the contrast line.
+- A blank page for a visitor without a save is fixed, and a render test guards it.
+
+_Frontend - hard-refresh._
+
+---
+
 ## v5.9.26
 
 **v5.9.26 - Drawn for the sand: a fight you can read, busts instead of headshots, a lower gate.**
