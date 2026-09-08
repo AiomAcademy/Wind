@@ -5,6 +5,23 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.24
+
+**v5.9.24 - Omni Dynamics: Patterns and TradFi together, on every market the exchange lists.**
+
+### 🪐 One strategy, two detectors
+- **Omni Dynamics** runs Patterns Dynamics on crypto and TradFi Dynamics on stocks, forex, commodities and indices at the same time - one detector model on every market, each engine with its own trade cap, universe and cooldowns, the grid engine executing for both.
+- Its **page** drives both from one settings bar: the shared knobs (scanning, auto-trade, minimum confidence, timeframe, scan interval) write to both engines, the per-market caps stay their own; two live boards, one list of recent triggers.
+- Select it in **Main Settings** like any strategy; Auto-trade is the switch on the page. Exclusive of Asgrid's standing grids, Degen and Miner - held positions keep their DCA ladders.
+
+### 🧭 One matrix for every strategy
+- Which engines a strategy runs now lives in one place, read by trading start and the hot switch alike - a strategy can no longer be half-wired.
+- The backend tells the dashboard which strategies it accepts: a build that predates Omni shows the card locked with a reboot note instead of silently falling back to Asgrid.
+
+_Backend - effective at reboot. Frontend - hard-refresh._
+
+---
+
 ## v5.9.23
 
 **v5.9.23 - The gate: a new masthead, first steps for a fresh Brawler, and the pace where you need it.**
