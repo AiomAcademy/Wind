@@ -5,6 +5,26 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.28
+
+**v5.9.28 - Strangers at the gate: the Drifters, the stance, the contract - engine and sidecar.**
+
+### 🚪 The Drifters
+- **Strangers at the gate, as many as a day needs.** Ten Legends and a handful of rivals made a short day once the packs bought fifteen bouts. Drifters are generated fighters derived from the day, their number at the gate and the level they were called at - the server and the page derive the same stranger from the same id, nothing is stored, nothing can be forged. Met by name like anyone else; new faces at midnight UTC.
+- **Every Drifter is a legal fighter**: stats never past what a real Brawler of that level could have earned, gear from what the roster opens at that level, so the odds pill means what it says. Forty given names, **thirty houses**, and each house fights one way - Saltmarch plays the tempo, Bonecrag makes the wall, Emberfall hits.
+- **The Drifters' Sunday**: on Sundays the Trials seat you and seven strangers of elite stock, called two levels above you - a full bracket whatever the arena's population, and nobody real to lose for.
+
+### ⚔ The stance and the contract, as rules
+- **A stance before the gong**: Ardent, Prudent or Sly moves one stat up and one down by a tenth (a point at least each way), on the spec that fights and never on the row - the bout's snapshot carries it, so every replay fights exactly what was fought.
+- **The contract of the day**: three goals from a pool of fifteen, the same three for everyone, drawn from the day; a house of the day; a chest when all three are met. Shipped as engine rules here; the page that shows them lands in the next version.
+
+### 🧰 Tooling
+- **Wind Admin Portable** (operator-only, never committed): one command, node scripts/make-portable.mjs, packs the whole running master - tree, node_modules, consistent DB snapshots, secrets, the runtime and Claude's memory - under 2 GB, as step 12 of every checkpoint.
+
+_Sidecar - effective at reboot. Engine mirror in sync; engine +10 tests, sidecar +7._
+
+---
+
 ## v5.9.27
 
 **v5.9.27 - Read before you swing: fair matches, odds everywhere, the vault in your hands.**
