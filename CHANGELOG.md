@@ -5,6 +5,27 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.29
+
+**v5.9.29 - The blow that is felt: the fight with weight, a cell to come home to, reasons to come back.**
+
+### 💥 The fight, with weight
+- **Hit-stop and a flash on the one struck**: on a crit the whole stage freezes a few frames at the moment of impact; the fighter hit goes white for a frame; the weapon leaves a trail in the striker's colour.
+- **The final blow plays slow**, with the lens pushed in on whoever is about to win, and lingers before the tableau. A **momentum bar** under the scene - your colour from the left, theirs from the right, the seam sliding with every blow.
+- **Your stance before the gong** on the VS panel: Square, Ardent, Prudent, Sly - the odds and the tale of the tape recalculated as you choose.
+
+### 🏠 The Cell, drawn
+- The room itself: the **trophy wall** with the ten Legends' seals lit as you beat them, the **beam notched** once per day at the sand, the fire that burns when you are hurt or at night, the companion asleep at your feet (a touch wakes it), a window that keeps the hour. The masthead keeps it too - a moon at night.
+- **The contract of the day** with its chest, the **season parchment** - twenty-eight days, five steps that pay as they are reached - and the **gate that shuts** when the day is spent: chains, a padlock that opens for gems, the hour it reopens carved on the plank, a reminder if you ask for one.
+
+### 🃏 The gate's shelf
+- **Drifters dealt in** from the gate with their house seal, cards that tilt under the pointer; the **Nemesis** - a stranger who beats you comes back tomorrow a level up with a bounty on its head - and a stranger who **waited for you** after two days away.
+- **Share a card**: a picture of the result, both fighters and the verdict, for X and Discord. **Watch the sand**: the public feed, bout after bout, full screen. The **forge** as a scene when a Brawler is born.
+
+_Frontend - hard-refresh. The Cell's drawing is still small on a phone; a tall composition follows._
+
+---
+
 ## v5.9.28
 
 **v5.9.28 - Strangers at the gate: the Drifters, the stance, the contract - engine and sidecar.**
