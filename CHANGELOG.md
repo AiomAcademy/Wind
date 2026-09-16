@@ -5,6 +5,25 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.31
+
+**v5.9.31 - The storm's blade: the game's own mark, the room on a phone, and a fix that could not wait.**
+
+### ⚔ The storm's blade
+- **Wind Arena has its mark**: a sword whose blade is a lightning bolt, two gusts of wind across it, the storm sun for a pommel - on the ember plank for the app icon, on a round seal beside the name. WIND ARENA is cut in gold as outlines, so it renders the same on every device. New app icons (any and maskable), the share card redrawn around it. Original work, nothing borrowed. The Wind hub keeps its own logo.
+
+### 📱 The game on a phone
+- **The Cell, composed tall**: ten seals on two rows, the beam beneath, the fighter big by the fire - the room used to be ninety pixels high on a phone.
+- **The stage cropped to the fighters**: on a phone the sand gives up its edges and the warriors grow; the plates stay above them.
+- **The quickstep is a beat on stage** - a step in, a label, dust and a gust of sound - and the attributes now say what tempo and agility do: momentum and quickstep; dodge, riposte and crit.
+
+### 🩹 A fix that could not wait
+- **A tempo build could blank the page.** The log named every proc after a skill card, and the quickstep of 0.4.0 has none: the first double swing threw and the game went dark. The narrator is its own module now, and a test walks every step the rules can emit, under every rule set, through the log and the stage. If a step ever appears that nothing knows how to tell, the build fails - not the player.
+
+_Public arena - rebuilt at reboot (the live site still serves the previous build until then). Render tests 27._
+
+---
+
 ## v5.9.30
 
 **v5.9.30 - Every stat a reason: the rebalance, and every past bout replays as it was fought.**
