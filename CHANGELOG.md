@@ -5,6 +5,26 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.30
+
+**v5.9.30 - Every stat a reason: the rebalance, and every past bout replays as it was fought.**
+
+### ⚖ Four stats, four reasons
+- **Tempo carries weight now.** Under the old numbers tempo bought initiative and nothing else: a tempo build won one bout in ten, a force build three in four. Now every blow carries half a point of damage per point of tempo, and tempo buys a **quickstep** - a second swing in the same turn, two percent a point, half the time at most.
+- **Agility dodges, ripostes and crits more**: two percent a point to dodge (cap 50), riposte 1.2 percent a point (cap 38), and a point of crit chance per point of agility. **Force hits a little less hard** (1.3 a point instead of 1.5). **Everyone starts with more life**: 72 at the base plus seven a point of vigor.
+- Measured on player-shaped builds - one stat maxed and the rest spread, same gear - every build now wins between 46 and 58 percent of its bouts at level 6 and 12, and the even fighter keeps a small edge at 20. A test guards that band for good.
+
+### 📜 The rules are versioned
+- A bout is stored as a seed and replayed - change a number and history rewrites itself. So the numbers now live by version: **0.3.0 is cut in stone**, 0.4.0 is the new one, and the golden bout of 0.3.0 still replays byte for byte.
+- **Every bout, trial and defence remembers the version that fought it** (sidecar schema 12). The feed, the history, the share cards and the trials replay with it; a record from before the column replays under 0.3.0. A fresh bout says which rules fought it.
+
+### 🧰 Tooling
+- **Wind Admin Portable** no longer fails when a file named in its inventory vanishes before the zip is written (a build running meanwhile): the path is dropped and reported in the manifest. Run it alone, after every build.
+
+_Sidecar - effective at reboot (schema 12). Frontend - hard-refresh. Engine mirror in sync; engine +7 tests, sidecar +3._
+
+---
+
 ## v5.9.29
 
 **v5.9.29 - The blow that is felt: the fight with weight, a cell to come home to, reasons to come back.**
