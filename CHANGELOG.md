@@ -5,6 +5,23 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.32
+
+**v5.9.32 - The blow that lands: the strike, looked at pose by pose, and fixed at the source.**
+
+### ⚔ The blow that lands
+- **The arm swings from the shoulder.** It pivoted on the top of its own box, which the raised weapon pushed above the shoulder - so every swing turned around a point in the air.
+- **Both sides strike forward.** The right-hand fighter is the left one mirrored, and the swing was reading its direction inside the mirror - it swung behind its own back. The mirror alone decides now.
+- **The blade comes round to the target.** A weapon is drawn upright in the hand and was never turned: arm forward, blade at the sky, then backwards. A wrist brings it to point at the opponent at the moment of the chop, and the lunge carries far enough for the blade to touch.
+- **The first blow of every bout lunges.** The entrance and the pose shared one element, and one element has one animation - the entrance ate the first lunge. They are two elements now.
+
+### 🔬 The strike lab
+- A dev-only page on the public app's dev server (lab.html) runs one bout and freezes every animation at a chosen instant, so a swing can be looked at pose by pose instead of guessed at. Not built, not served in production.
+
+_Public arena - rebuilt at reboot. Render tests 27._
+
+---
+
 ## v5.9.31
 
 **v5.9.31 - The storm's blade: the game's own mark, the room on a phone, and a fix that could not wait.**
