@@ -5,6 +5,29 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.33
+
+**v5.9.33 - Nothing left at the bench: the Polymarket scanner, an X queue that tells the truth, BTC collateral valued right.**
+
+### 🔮 Prediction Markets, a scanner
+- **A Polymarket scanner, read-only, off by default.** Every few minutes it reads the top markets and the live BTC/ETH Up/Down windows and asks the one question the public arb bots never do: after the taker fee (rate x p x (1 - p) per share, makers pay nothing), is anything left? Fee-adjusted complement edges, multi-outcome sums, a daily leaderboard snapshot to measure rank persistence, a wallet inspector.
+- **A crypto signal layer**: a probability of Wind's own, from its klines, compared with the ask on the Up/Down windows and the price targets; every YES/NO signal is journaled and resolved against the book afterwards. A **paper market maker** rests bids below the calibrated probability - simulation only, nothing is ever sent.
+- The page at /prediction-markets, the settings under Advanced Config. No keys, no orders, no funds - the key that signs on Polymarket is the key that owns the wallet, and that decision stays yours.
+
+### 🐦 The X poster tells the truth
+- A dead refresh token is named as such: the poster pauses and says which script to run instead of retrying every five minutes for four days. The database's silence is not an answer (null is not an empty list); a row retyped to PHANTOM_CLEANUP is reversible, so it is never a settlement; and the health window now outlives the reconcile window, so an alarm cannot go quiet at the moment the loss becomes permanent.
+
+### ₿ Collateral valued right
+- **BingX Multi-Assets**: the venue's mortgage amount values the free portion of the collateral, so the unit price is mortgage over transferable - never over total, which halved the price as margin got committed. The stable margin pool is one pool quoted in two currencies: the largest quote, never the sum. The Home cards show the same figures in the collateral coin under the USD values.
+
+### 🧰 Tooling
+- **Wind Admin Portable**: hot log folders are staged as frozen snapshots for the file being written and hard links for the rest - the zip had died on the day's journal right after a reboot.
+- The BTC growth mandate offer, written down (docs).
+
+_Backend - effective at reboot. Frontend - hard-refresh._
+
+---
+
 ## v5.9.32
 
 **v5.9.32 - The blow that lands: the strike, looked at pose by pose, and fixed at the source.**
