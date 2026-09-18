@@ -5,6 +5,32 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.34
+
+**v5.9.34 - Follow the money, then check it paid: a Polymarket Sniper, ladder arbitrage, and a track record that settles itself.**
+
+### 🛰️ Polymarket Sniper
+- **The Whales Sniper, for Polymarket.** Discovery pulls the public leaderboards - 24h, 7d, 30d, all-time, by profit and by volume - plus Polymarket's own crypto board, and reads the platform tape of every trade above 2,000 USDC. Each whale is scored 0-100 on consistency across boards, return on volume, win rate, size and recency, then classified: Sniper, Scalper (lives on the Up/Down windows), Smart Money, Accumulator, Flipper, Degen.
+- **Smart Money Positions** - where the open money sits right now, grouped by market and outcome: how many whales hold it, capital at risk, size-weighted entry against the current price, floating profit, and what the same pool holds on the other side. A split crowd is not a signal, and the table says so.
+- **Track any wallet** and its trades reach the feed and Telegram within half a minute. Alpha signals: a top whale opening a market nobody was in, three top whales on one outcome inside an hour, a crowd forming in ten minutes, a trade above the big-trade floor, a whale selling out.
+- **Do the whales beat the market?** Every signal is journaled at the price the whale paid, then settled against the market's own result. The header reports hit rate against the implied probability paid, profit per one-dollar share, and a verdict by confidence - winning 60 per cent of your bets at 55 cents is not an edge.
+- Copy stays **record-only**: eligible trades are journaled as intent, never placed. On Polymarket the key that signs an order is the key that owns the wallet, and that decision stays yours.
+
+### 🪜 Ladder arbitrage, and a scanner that stops betting
+- Polymarket prices "reaches 79k" and "reaches 80k" as separate thin markets, yet reaching the harder one implies the easier. When the book prices that backwards, buying YES on the easy market and NO on the hard one pays at least one dollar in every state of the world. The scanner now enumerates every pair, prices it after both taker fees and journals it - no model, no speed race.
+- Up/Down journaling is **off**. Over a thousand signals the market was the better forecaster, so the page keeps showing the model and the scanner stops recording bets it would have lost.
+
+### 🧭 Navigation
+- The Applications rail is grouped into four families: Copilot & Intel, Engines, On-chain Snipers, and Polymarket.
+
+### 🔧 Fixes
+- Polymarket's closed-positions endpoint returns its winners first and caps a page at fifty rows, so every whale read as a flawless record. It is paged newest-first now, which also corrects the wallet inspector on the scanner page.
+- Return on volume no longer mixes leaderboard windows: one whale showed 219,000 per cent because a day of appreciation was divided by a day of trading.
+- A journaled signal is never purged while its market is still open, so a track record cannot quietly erase itself.
+- Arena: a steadier battle scene and public shell.
+
+---
+
 ## v5.9.33
 
 **v5.9.33 - Nothing left at the bench: the Polymarket scanner, an X queue that tells the truth, BTC collateral valued right.**
