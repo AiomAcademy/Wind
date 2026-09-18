@@ -5,6 +5,27 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.36
+
+**v5.9.36 - The side of the book that gets paid: Polymarket pays makers, and a season for the sand.**
+
+### 💵 The side of the book that gets paid
+- **Polymarket charges takers and pays makers.** Every measure this engine had made read the ask - the taxed side - while the venue was paying the other one. Fee schedules are taker-only, so a resting order pays nothing at all, and incentivised markets split a daily USDC pool among the orders that rest near the middle.
+- **17,478 markets are being rewarded right now, for about 260,000 USDC a day.** Read from the venue's own current-rewards list rather than guessed: every configuration carries its own start and end date, not one has expired, and more than five thousand of them started today. The programme is alive and refreshed daily.
+- **The score is quadratic in closeness to the middle** - ((v-s)/v) squared, per share - so an order resting at the maximum qualifying spread earns exactly nothing. The reward is not a gift: it is payment for adverse selection. That is why this ships as a measurement and not as a strategy.
+- **A paper farmer that measures both sides.** Each pass scores the resting book, plans the two-sided quote our capital would buy, and records the share of the pool it would win. Then it replays the public tape against those quotes to price what they would have attracted: a trade through our level fills in full, one exactly at it fills half. A matched YES and NO pair redeems for one dollar whatever happens, so it is marked at par and only the unmatched excess carries price risk. Net is rewards earned minus what the inventory cost - the only number that decides anything.
+- **A minimum horizon, because the top of the rate table lies.** The best-paying markets are in-play sports props settling within hours, which is the worst possible place to rest a quote. Anything settling sooner than seven days is skipped, and the ranking becomes what the thesis predicted: slow questions that barely move, paid a thousand USDC a day to have a book at all.
+- Off by default, read-only, no keys and no orders - nothing is ever executed. The toggle arms and disarms it live, with no reboot.
+
+### 🏜️ A season for the sand
+- **A season is 28 days**, the same 28 for everyone, derived from the arena day and never stored - a client, the sidecar and a service name the same season without asking each other. Ten names turn on a wheel, and after a full turn a name comes back with its numeral, so two seasons never share a title.
+- **The crown moves.** The Legends rotate one place along the roster each season and the crowned one leads the ladder, carrying a bounty. The engine never learns who the Legends are: it takes their ids and hands back the same order on every client.
+- Nothing here touches how a bout resolves, so a season can turn without a new engine version.
+
+_Backend - effective at reboot. Frontend - hard refresh. Backend 965 tests, engine 133, sidecar 159, render 27._
+
+---
+
 ## v5.9.35
 
 **v5.9.35 - The flask and the kit: what a fighter carries, and a sand you can actually read on a phone.**
