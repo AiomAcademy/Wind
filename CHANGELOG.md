@@ -5,6 +5,27 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.35
+
+**v5.9.35 - The flask and the kit: what a fighter carries, and a sand you can actually read on a phone.**
+
+### 🧪 The flask
+- **A fighter drinks what it brought.** Three flasks at the Shop's new counter, paid in Essence: the Sand Tonic mends 16, the Grit Flask mends 10 and puts a knocked-loose weapon back in the hand, the Storm Draught mends 30. Two travel to the sand at a time; below a third of its life the fighter drinks the first one packed, and that flask leaves the satchel.
+- **Engine rules 0.5.0**, and the promise that makes it safe: the drink rolls no die, so a fighter who brought nothing resolves exactly as it did under 0.4.0. The 500-bout golden of 0.4.0 passes unchanged under 0.5.0, and a second golden covers 500 bouts with a flask in every hand. Every number of 0.4.0 is untouched.
+- Flasks, weapons, skills and companions can now be offered on the **Wind Marketplace** under a new Arena aisle: the listing names real goods from the game's own tables, the buyer pays the seller's wallet directly, and the game stays the authority on what a Brawler owns.
+
+### 🧰 The kit, under the champion cards
+- A bar with no chrome: the **weapons in the order they are drawn**, the one in hand lit, then the flasks - a drunk one empties. Disarm an opponent and it takes the next weapon from its own vault, bare-handed only when there is nothing left; the bar shows it happening.
+
+### 📱 The sand, on a phone
+- **The fighters are a third bigger.** They stand closer, the crop is tight on the sand, and every outward move is reined in to the frame: a shorter lunge, a smaller dodge and recoil, a fall that goes inward.
+- **The words read.** Damage, CRIT, DODGE, QUICKSTEP and a flask's name are a third larger and sit on a dark pill, so nothing is lost against the wall. The **striker is drawn in front** of the one it strikes, so a blade no longer vanishes at the moment of impact.
+- The **name cards** are one line and a thin bar, and the stage bleeds to the edge of the screen.
+
+_Public arena - rebuilt at reboot. Backend - effective at reboot. Engine 129 tests, sidecar 159, render 27, backend 949._
+
+---
+
 ## v5.9.34
 
 **v5.9.34 - Follow the money, then check it paid: a Polymarket Sniper, ladder arbitrage, and a track record that settles itself.**
