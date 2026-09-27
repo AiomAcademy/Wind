@@ -5,6 +5,55 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.37
+
+**v5.9.37 - The stuff takes a soul: a found weapon is its own, the forge, a market that settles in $WINDH, the Gale, the Gazette, and a mask over every destiny.**
+
+### ⚔️ A weapon is an instance
+- **Every weapon found on the sand is its own piece.** Roster v3 adds the affixes - Edge, Heft, Keen, Swift, True - and a found weapon carries up to two of them, each at a tier, rolled on the server from a nonce the client never sees. Four qualities: plain, fine, rare and storied; a storied one carries a name of its own, "Squall Saber of the Third Gust".
+- **Engine rules 0.6.0** read the roll: a fighter swings the rolled numbers. Every number of 0.5.0 is untouched and no die is added, so a fighter carrying plain weapons resolves exactly as it did - the 500-bout golden of 0.4.0 passes unchanged under 0.6.0, and a second golden covers 500 bouts with a roll on every blade. Edge and Heft are proportional to the weapon's own band: a flat bonus was worth ×2.3 on a dagger and ×1.3 on a maul, so the balance test now caps a fully rolled weapon at a quarter over its plain base. A sidegrade with texture, never a new tier.
+- **The roll travels with the spec.** One canonical string per weapon joins the fighter's canonical form (thirteen keys now), so a bout snapshot replays what was swung whatever became of the piece since.
+- **A won bout can leave a weapon on the sand** - two finds a day at most - and the contract chest, the Trials and the Gale drop them too. A level-up weapon card mints a plain instance.
+
+### 🔥 The forge and the vault
+- **The forge** rolls a fine-or-better weapon's affixes again at the same quality, in essence (slowly) or in gems (sooner). The same table either way: paid is faster, never luckier.
+- **The vault is a grid of the whole armoury**: every base drawn, the unknown ones dimmed and readable, your instances stacked under their base with a frame per quality and the roll as pills. The loadout carries instances, and auto-stuff chooses among them.
+- **The essence and the nuggets now live on the server** for a signed-in player: every bout credits the wallet through the ledger, the essence is capped per day, the Nugget Counter charges its prices, and /me is the truth. The gem-wipe bug on every settled bout is fixed.
+
+### 🪙 A market that settles in $WINDH
+- **Found weapons change hands in the game.** A listing holds the piece while it is for sale; the buyer pays the seller wallet to wallet in $WINDH, the arena verifies the transaction on the chain - recipient, mint, amount, memo, signer - and moves the piece. A signature settles exactly once. The treasury's fee (2 percent, the owner's dial) travels in the same transaction. The house sells no power.
+- **Gems are paid the same way** once the arena has a mint and a treasury configured; until then the testnet keeps its free packs.
+- **The public game signs the payment itself**: a Solana transfer built and signed in the browser from the player's own key, with no wallet library added, checked byte for byte against the official one; the RPC goes through a same-origin relay.
+- The hub Marketplace's Arena wing now points at the arena's own stalls, and the master no longer drops an arena listing's item lines.
+
+### 🌪️ Come back tomorrow
+- **The Gale**: enter once a day, in your division; the bracket is resolved after midnight from a seed minted when the entries close, padded with Drifters, and unveiled round by round in the morning. Any match replays. Rounds pay nuggets and finds; a champion never leaves with a plain blade.
+- **Defeats are the meter.** The day still closes on three defeats; a defeat pack, bought in gems, buys one more tolerated defeat and three more bouts of ceiling.
+- **The Gazette**: the arena's daily recap, written by the wind from what the ledgers already know - defences held, streaks ended, upsets, storied finds, the Gale's champions. Nobody is named in a loss unless they asked to be. Posted to Discord when a webhook is set.
+- **Punching up pays, farming does not**: essence scales with the power gap, and the second bout against the same rival in a season pays less, the fourth nothing.
+
+### 👑 Your Brawler, and no other
+- **The mask**: at naming, the storm keeps a slice of the roster from every Brawler - two weapons, two skills, sometimes a companion - never offered, never dropped. A Reading (nuggets, once a season) shows what is kept; a reroll (gems, once a season) draws a new mask.
+- **Titles and badges from the peak**: what a Brawler was at its best is never taken back. Fifteen titles, chosen by the player; replacing-tier badges worn beside the name everywhere a name is shown. A completion score in which time-boxed glory is worth zero, so a latecomer can still reach the top.
+- **The Vanity Counter**: an epithet of your own under the name, a hue for your card, a new name for a storied blade. Gems, cheap, and none of it touches a bout - bought for love, not for power.
+
+### 🎯 Two goals a bout
+- **Every bout deals two small goals** from its own seed - land a crit, slip two blows, draw a second weapon, win in five - drawn only among what that fighter could meet, lit the beat they happen during the replay, and paid a trickle of essence under the day's cap. Every goal template ships with a worked example that passes and one that fails, and a test evaluates them all: a goal a rules bump made trivial or impossible goes red before it goes live.
+- **Essence packs** join the gems on the paid counter: bought with $WINDH once the arena has a mint, free previews until then.
+
+### 🎩 Polymarket: the maker, in two modes
+- **The paper farmer of v5.9.36 has a maker to test it**, sharing everything but the executor. **Shadow** (default, no SDK): the same selection, size and cadence, filled off the real public tape against the quote that was really resting, with the unfavourable rule, inventory valued at the exit price, the $1 daily minimum applied, matched YES+NO pairs merged back to dollars every pass, and a budget that means money spent. **Live** (off by default, armed by the operator alone): the same loop through the official SDK - post-only BUY orders from a Wind wallet, hard caps in code, disarming cancels every resting order, nothing is ever sold - and Polymarket's own earnings read back per market and day next to the model's figure. Paid ÷ predicted, apples to apples.
+- **Whale holders are netted across a market's outcomes** on the Polymarket sniper: a wallet holding both sides equally nets to zero and is a market maker, not a view.
+- **A rolling-hour burst guard on the X poster**: after the 18 September incident (a stored gap of 4 minutes, 50 posts in under three hours, 46 hours of refusals) the minimum gap has a floor of 10 minutes and the hourly cap a ceiling of 10 posts, neither liftable by config.
+
+### ⚔️ The mark, and the game's own house
+- **The mark is the sword alone**: the bolt-bladed sword and the storm sun on the ember, with no lines across it - on the icon, the seal, the share card, and the battle sky, which no longer draws wind streaks.
+- **Wind Arena has its own Discord**: the Gazette and the Gale post there every morning, the patch notes wear the arena's seal, and the rules of the sand are pinned at the gate.
+
+_Public arena - rebuilt at reboot. Sidecar - effective at reboot (schema 13 → 17 migrates on boot; every legacy weapon becomes a plain instance). Backend - effective at reboot. Frontend - hard refresh. Engine 273 tests, sidecar 281, render 62, backend 989. Wind Arena is inspired by La Brute (Motion Twin, 2008); engine, rules, fighters and art are original._
+
+---
+
 ## v5.9.36
 
 **v5.9.36 - The side of the book that gets paid: Polymarket pays makers, and a season for the sand.**
@@ -624,7 +673,7 @@ _Frontend - hard-refresh. Backend - effective at reboot._
 
 ### 🧾 Recovered trades were vanishing from the daily books
 - The daily statistics deliberately skip the sync's *_PARTIAL rows to avoid double-counting - but the PnL sync writes its OWN recovered legs with that suffix, then retypes their twin precisely so the merge cannot double-count them. Excluding them blanket-style therefore dropped that money from **both** sides.
-- Measured live before the fix: a day worth \$0.1615 booked as \$0.084 on one instance, and **\$1,321.22 hidden** on the master. Recovered rows are now counted exactly once.
+- Measured live before the fix: a day worth $0.1615 booked as $0.084 on one instance, and **$1,321.22 hidden** on the master. Recovered rows are now counted exactly once.
 
 ### 💰 The Equity card shows the real portfolio again
 - In Multi-Assets mode the card was pinned to the fixed base capital. It now shows live portfolio worth - with BTC posted as collateral that figure legitimately moves with BTC, and pretending otherwise was the wrong kind of stable.
@@ -708,7 +757,7 @@ _Master-only. Backend - effective at reboot._
 - Six rooms: your Brawler and its attributes, the arena, trials, squadron wars, apprentices and the shop. Your collection shows the silhouette of what you have **not** earned yet, and every past bout is replayable from its seed.
 
 ### 🪙 Two currencies
-- **Combat Essence** on every fight, buyable with \$WINDH, spent on rest and re-rolls. **Gold Nuggets** never drop from an ordinary bout - they come from milestones, 50 fixed objectives and a weekly rotation.
+- **Combat Essence** on every fight, buyable with $WINDH, spent on rest and re-rolls. **Gold Nuggets** never drop from an ordinary bout - they come from milestones, 50 fixed objectives and a weekly rotation.
 
 ### 🏆 Trials, squadrons and apprentices
 - Daily bracket trials with nine ranks climbed only by winning. **7-vs-7 squadron wars**, first to four, where the order of your line-up is the decision. Apprentices pay their mentor as they grow - capped per day, because an uncapped referral is a farm.
@@ -736,7 +785,7 @@ _Frontend - hard-refresh. Backend - effective at reboot._
 - The passcode-encrypted chat lock stays. **Chat earned a slot in the mobile dock** (next to Wallet) — the right-edge swipe still works too.
 
 ### ⚔️ Wind Arena & ⛏️ Miner mode (previews)
-- **Wind Arena** — an original auto-battler built for \$WINDH wagers: deterministic battle engine (same seed → same fight, provably fair), fighters, and a battle scene. Escrow and matchmaking are still in the lab — this ships the foundation.
+- **Wind Arena** — an original auto-battler built for $WINDH wagers: deterministic battle engine (same seed → same fight, provably fair), fighters, and a battle scene. Escrow and matchmaking are still in the lab — this ships the foundation.
 - **Miner mode** — a long-only gold engine (XAU) with a backtested safe profile (leverage 5, spacing 0.5 — zero liquidations over 16 months of history). Opt-in strategy, off by default.
 
 ### 🐦 X (Twitter) auto-poster
@@ -756,14 +805,14 @@ _Backend — effective at reboot (self-host: re-pull + recreate the container). 
 **v5.5.9 — A liquidation is a loss the books must show, and the sync now proves its own honesty.**
 
 ### 🚨 Liquidations were invisible to every total
-- BingX settles a liquidation through the **INSURANCE_CLEAR** income type, not REALIZED_PNL. The PnL sync only read the latter — so when a real position was liquidated (\$180.34 on the live account), the engine's own loss row found no exchange counterpart and was **quarantined as a phantom**. The account was down; the books were not.
+- BingX settles a liquidation through the **INSURANCE_CLEAR** income type, not REALIZED_PNL. The PnL sync only read the latter — so when a real position was liquidated ($180.34 on the live account), the engine's own loss row found no exchange counterpart and was **quarantined as a phantom**. The account was down; the books were not.
 - INSURANCE_CLEAR is now grouped as realized. Self-healing proven live on BOTH instances: the quarantined row was restored with the venue's own figure on the very next pass, and a second liquidation was caught on the other instance the same hour.
 
 ### 🧾 The sync proves its own books every pass
-- Every pass now journals a **reconciliation summary**: visible history vs the exchange's own realized total over the window, with a drift alert (hysteresis, max(\$1, 0.5%)).
+- Every pass now journals a **reconciliation summary**: visible history vs the exchange's own realized total over the window, with a drift alert (hysteresis, max($1, 0.5%)).
 - **Evidence coverage**: the venue silently forgets income beyond ~2 days — absence of memory is not absence of income. Verdicts (quarantine, drift) are now bounded to where the exchange actually remembers; a real close can no longer be branded a phantom at the retention boundary.
 - **Blind rows get eyes**: sync-inserted rows carried no price/side/qty. They are now filled from the venue's own fills (never overwriting), a few per pass.
-- Corrected rows get a **coherent pnl_percent** (30 rows had the % contradicting the \$ sign), duplicates are labelled as duplicates, and `POST /api/pnl-sync/run {dryRun:true}` plans everything and writes nothing.
+- Corrected rows get a **coherent pnl_percent** (30 rows had the % contradicting the $ sign), duplicates are labelled as duplicates, and `POST /api/pnl-sync/run {dryRun:true}` plans everything and writes nothing.
 
 ### 📱 The app answers before you log in
 - `/api/health` — the first request the mobile app makes — ran three COUNT scans over the whale tables (measured 14-20 s on a 670k-row radar). The phone timed out and said "offline" with perfectly good credentials. Liveness is now memory-only: **milliseconds**, radar counters cached 60 s.
@@ -810,7 +859,7 @@ _Backend — effective at reboot (self-host: re-pull + recreate the container). 
 
 ### 🎯 LIQ · SL — computed with the whole ladder eaten
 - The liquidation price shown was where the position **as it stands today** would be liquidated — a fiction, since the DCA rungs exist precisely to fill on the way down. Wind now projects the **final** position (every configured rung filled, including the ones the order ceiling keeps off the book), and shows that LIQ — with "N layers in" so you know how many it assumed.
-- **SL ≈ $** follows: the loss at liquidation with the ladder eaten is the **whole symbol budget**, not today's tiny qty × distance. APT read −\$1.26; the truth is **−\$178**. Every position converges on its ~\$175–205 budget — that is the number to look at.
+- **SL ≈ $** follows: the loss at liquidation with the ladder eaten is the **whole symbol budget**, not today's tiny qty × distance. APT read −$1.26; the truth is **−$178**. Every position converges on its ~$175–205 budget — that is the number to look at.
 
 ### 📈 Trading View charts the exchange you trade on
 - Clicking a position opened a chart that went to **Binance Futures** for candles — so every TradFi contract and every BingX-only alt came back "No chart data". Candles now come from **your exchange** (BingX, which serves TradFi + every listed alt), Binance as fallback. The pair selector pins the current symbol and shows the venue's name (MSTR/USDT, not NCSKMSTR2USD/USDT).
@@ -826,9 +875,9 @@ _Backend — effective at reboot (self-host: re-pull + recreate the container). 
 
 **v5.5.6 — A rescue close with no price is no longer booked as a total loss.**
 
-### 💵 The half that invented a −\$105 loss
+### 💵 The half that invented a −$105 loss
 - When the exchange throttles a full close, Wind closes the position in **halves**. The half's result was computed from the live price — and with no price at all that value is **zero**, which the formula reads as _the asset went to zero_. The entire notional of the half was booked as a loss.
-- Measured on 2026-08-14 at 19:31: GME booked **−\$105.35** — exactly its entry × quantity. That figure went straight to the **daily loss circuit breaker**, which can stop the day's trading over a loss that never happened.
+- Measured on 2026-08-14 at 19:31: GME booked **−$105.35** — exactly its entry × quantity. That figure went straight to the **daily loss circuit breaker**, which can stop the day's trading over a loss that never happened.
 - Non-crypto contracts have no continuous price feed, so this was their **normal** path, not a rare edge case.
 - A half with no price is now **left out of the books instead of invented**. Wind logs plainly that the result is unknown, and the hourly PnL sync inserts the real figure from exchange income — the same rule a full close has always followed.
 
@@ -854,7 +903,7 @@ _Frontend only — hard-refresh and the section is there. No reboot needed._
 **v5.5.4 — A closed trade now tells the truth, and a won trade stays won.**
 
 ### 💵 Closes that were booked at zero
-- A position closing while its price feed was silent was recorded as a flat **0.00%** — and that zero was fed to the **daily loss circuit breaker**, which therefore never saw the loss. Measured live: a −\$42.21 close counted as nothing.
+- A position closing while its price feed was silent was recorded as a flat **0.00%** — and that zero was fed to the **daily loss circuit breaker**, which therefore never saw the loss. Measured live: a −$42.21 close counted as nothing.
 - Wind now falls back to the **last known price**. Seen the same day: MRVL **+14.94%**, Coffee **+14.50%**, ORCL **+14.30%** — all would have been zeros. Non-crypto contracts get no live feed, so **every** TradFi close took that path.
 - With **no price at all**, Wind says so instead of inventing one: the trade is **excluded** from the breaker rather than counted as break-even, and the hourly PnL sync repairs the row. An unknown result is never a harmless one.
 
@@ -898,7 +947,7 @@ _Backend changes land at reboot (self-host: re-pull + recreate the container). F
 ### 📏 Order sizes that the exchange accepts
 - BingX publishes two different numbers per contract: the lot **step** and the minimum **order**. On crypto they sit close together; on forex the gap is **147×** — GBPJPY steps by 0.01 but refuses anything under 1.47 — and both legs of its grid came back rejected.
 - Sizing now floors on the exchange minimum **for non-crypto only**. Crypto is deliberately untouched: 566 of the 580 live crypto contracts declare the same field larger than their step, yet they have always traded at the step without a single rejection.
-- The handful of yen crosses whose minimum is genuinely large are **pinned, not excluded** — they enter at ~\$320 of notional (~\$32 of margin), comfortably inside a slot. Wind's rule has always been that the budget wins over a target size; a symbol is never dropped for being expensive.
+- The handful of yen crosses whose minimum is genuinely large are **pinned, not excluded** — they enter at ~$320 of notional (~$32 of margin), comfortably inside a slot. Wind's rule has always been that the budget wins over a target size; a symbol is never dropped for being expensive.
 
 ### 🎛️ Its own page
 - **TradFi Dynamics** in the sidebar: live detections with sparklines, universe size, how many markets are currently closed, and every setting — confidence, timeframe, concurrent trades, scan interval, universe cap, re-entry cooldowns.
@@ -914,11 +963,11 @@ _Backend changes land at reboot (self-host: re-pull + recreate the container). F
 
 ### 💵 Portfolio PnL is net, and lands on your real equity
 - Fees and funding live in their own ledger and never reached the Home chart, so the curve drifted above the account by exactly what you had paid. They are now folded in **at their own timestamps** — the line steps down when a fee is charged, instead of being deducted in one lump at the end.
-- Measured on a live account: the curve used to end at \$2,066 and read **+\$67 gross**; it now ends on **\$2,059.71 — the exchange's own figure — and reads +\$61 net**.
-- Hovering a point shows the **equity at that moment** to the left of the delta. Knowing you moved +\$47 says little without knowing what the account was worth.
+- Measured on a live account: the curve used to end at $2,066 and read **+$67 gross**; it now ends on **$2,059.71 — the exchange's own figure — and reads +$61 net**.
+- Hovering a point shows the **equity at that moment** to the left of the delta. Knowing you moved +$47 says little without knowing what the account was worth.
 
 ### 🏆 A breakeven is not a loss
-- A close that realises exactly \$0 was being counted as a **loss**. On a live account that turned 5 real losses into 12 and dragged the win rate from **93.2% down to 85.0%**.
+- A close that realises exactly $0 was being counted as a **loss**. On a live account that turned 5 real losses into 12 and dragged the win rate from **93.2% down to 85.0%**.
 - Worse than the display: those phantom losses fed the **consecutive-loss streak the risk manager reads**, so closes that lost nothing could arm the circuit breaker. Breakevens are now their own category — counted as trades, absent from both columns and from both streaks — and shown as *68W / 5L / 7 breakevens* so the figures reconcile.
 - The live counters now agree with the historical reconstruction, which had always counted it this way.
 
@@ -943,8 +992,8 @@ _Backend changes land at reboot (self-host: re-pull + recreate the container). F
 - The name is only claimed when the evidence is unambiguous: one matching engine event within ±15 seconds, and a PnL sign that agrees. Anything less stays an honest **Exchange Sync** — a wrong reason on a money row is worse than no reason.
 
 ### 🚫 One close, one line
-- A real close whose exchange record arrived hours late was quarantined as a phantom. When the record finally landed, the matcher no longer saw the row it had itself hidden, concluded the close was missing and **inserted a duplicate** — while a separate pass un-quarantined the original. Measured on a stress account: **34 doubled closes and \$96 of gain that never existed**, enough to bury a real loss the operator was looking for.
-- Quarantined rows now take part in matching, and a row whose counterpart arrives is **restored in place** — never duplicated. A second guard refuses any insertion when a line already covers that close within a minute. The reconciliation gap that exposed this went from **+\$95.92 to \$0.00**.
+- A real close whose exchange record arrived hours late was quarantined as a phantom. When the record finally landed, the matcher no longer saw the row it had itself hidden, concluded the close was missing and **inserted a duplicate** — while a separate pass un-quarantined the original. Measured on a stress account: **34 doubled closes and $96 of gain that never existed**, enough to bury a real loss the operator was looking for.
+- Quarantined rows now take part in matching, and a row whose counterpart arrives is **restored in place** — never duplicated. A second guard refuses any insertion when a line already covers that close within a minute. The reconciliation gap that exposed this went from **+$95.92 to $0.00**.
 
 ### 🩹 Exchange rate limits, read correctly
 - BingX error **109429** carries two different meanings: an account-wide throttle that comes with an explicit retry time, and a per-symbol position-value ceiling. Wind now tells them apart — it skips the single oversized rung in one case, and in the other **arms its backoff from the exchange's own unblock timestamp**, so the next pass knows the account is throttled instead of cancelling a ladder it cannot rebuild.
@@ -960,7 +1009,7 @@ _Backend changes land at reboot (self-host: re-pull + recreate the container). F
 
 ### ⚖️ DCA margin, shared the way you configured it
 - **Your slot is fixed: equity ÷ Max open positions.** Set 5 max positions and every symbol is sized on one fifth of the account, always — whatever the book currently holds. The ladder then takes whatever is left of that slot once the position's own exposure is deducted.
-- Before this, the divider was the *live* position count: the first symbol to open on an empty book divided by one and was budgeted at **100% of the account**. Measured on a real account: two symbols froze 97% of the equity between them while three later positions could not place a single layer — one was refused its first \$2.09 rung on a \$1,010 account.
+- Before this, the divider was the *live* position count: the first symbol to open on an empty book divided by one and was budgeted at **100% of the account**. Measured on a real account: two symbols froze 97% of the equity between them while three later positions could not place a single layer — one was refused its first $2.09 rung on a $1,010 account.
 - The per-symbol cap now also counts the margin the **existing** ladder already freezes, so a heal can no longer top a symbol back up to a budget it is already holding.
 - Symbols are visited **hungriest first**: margin freed by a close goes to the position with the emptiest ladder, not to whoever happens to sit first in the list.
 
@@ -977,7 +1026,7 @@ _Backend changes land at reboot (self-host: re-pull + recreate the container). F
 
 ### 💵 Honest money, again
 - The Trade History headline is now **Net PnL** — fees and funding deducted — with the gross and the fee total shown underneath.
-- The Positions table shows the **real \$ committed** per position (margin, leverage excluded) under the token amount, and the Exposure card leads with total margin instead of leveraged notional.
+- The Positions table shows the **real $ committed** per position (margin, leverage excluded) under the token amount, and the Exposure card leads with total margin instead of leveraged notional.
 - **PnL Truth Sync** stops mistaking a tiny real close for a phantom: dust-sized exchange closes still match their Wind row, a quarantine now requires the row to have gone unmatched for hours rather than across two quick reboots, and any row wrongly quarantined is **restored automatically** with the exchange's own figure.
 - Pattern Trader gains a **Reset** for the re-entry cooldowns — useful after closing a position by hand, since the cooldown is armed at entry.
 
