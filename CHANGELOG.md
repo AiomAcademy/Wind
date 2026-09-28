@@ -5,6 +5,19 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.40
+
+**v5.9.40 - A maker test that sizes itself: capital that follows the wallet, leftovers sold at a profit, and a safer pick of markets.**
+
+### 🎩 Polymarket: the maker test sizes itself
+- **Its capital now follows the wallet** instead of a fixed figure, and it chooses by itself how many markets to quote - from one up to your setting - to earn the most at that capital. Shadow by default, off by default.
+- **A market it stops quoting no longer keeps its leftover shares as a bet**: they are sold as soon as each share fetches more than it cost after fees, and the money goes back to earning rewards.
+- **A safer pick of markets**: a market that just jumped is no longer treated as quiet, and Polymarket's $1 daily payout minimum is counted on the account's total, the way Polymarket applies it.
+
+_Backend - effective at reboot. Frontend - hard refresh._
+
+---
+
 ## v5.9.39
 
 **v5.9.39 - Redrawn from the sand up: every champion inked again, your name still your fate, and a flask you can see.**
