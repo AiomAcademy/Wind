@@ -5,6 +5,22 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.39
+
+**v5.9.39 - Redrawn from the sand up: every champion inked again, your name still your fate, and a flask you can see.**
+
+### 🎨 Every champion, redrawn
+- **Every fighter of Wind Arena has been drawn again from the sand up**: jointed limbs, inked outlines, hard desert shadows. Inspired by La Brute.
+- **Your name is still your fate.** The same name always forges the same fighter - hair, eyes, beard, scars, masks and helms, all read from its letters.
+- **The Legends wear their own canonical looks**, so the crown's holders are known on sight.
+
+### 🧪 A flask you can see
+- **Drinking a flask now shows**: the health plate and the momentum bar climb the moment the bottle empties. Before, they stayed put while the fighter healed.
+
+_Wind Arena release - hard-refresh the arena to see the new drawings._
+
+---
+
 ## v5.9.38
 
 **v5.9.38 - Every screen tells the truth: the whole hub gone over, money that moves only when it should, and a maker test that reads the tape.**
