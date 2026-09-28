@@ -5,6 +5,30 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.38
+
+**v5.9.38 - Every screen tells the truth: the whole hub gone over, money that moves only when it should, and a maker test that reads the tape.**
+
+### 🧭 The whole hub, gone over
+- **Four auditors read every page, every finding was re-checked in the code before a line changed, and every diff was reviewed**: over 170 fixes. A failed request now says so instead of showing "0", "No positions" or "100 Healthy"; unknown links land on Home; every page has its tab title; the command palette finds every page.
+- **One way to write money**: "-$12.34" everywhere, never "$-12.34" or "-0.00", with the same separators on every browser.
+- **Lighter on your machine**: polling pauses while the tab is hidden, and one shared poller reads the bot status instead of four.
+- **Phone and keyboard**: 44 px targets, labelled icon buttons, confirmations in place instead of browser pop-ups, a chat that no longer yanks you to the bottom, and a failed message you can retry.
+
+### 🛡️ Money moves only when it should
+- **CatalystDEX**: a stablecoin BUY sizes its amount to the token's decimals, truncated and never rounded up, so it no longer fails on "345.67800000000005". The live price comes from an authenticated feed, no BUY is sized on a default or another pair's price, and a stale quote cannot be confirmed.
+- **Token Sniper**: the engine card follows the real Auto-Buy state and says when the circuit breaker disarmed it; it never re-arms itself. Realized PnL reads per coin (ETH, BNB, POL) instead of one mixed sum.
+- **Settings**: an emptied number blocks Save and names the field instead of saving nothing; negative values and TP targets type normally.
+- **Manual Trade** estimates with your real equity and leverage and will not submit an empty order; engine sliders save once per change; demo listings in the Marketplace can no longer open a payment; a proposal restored from the AI Assistant's history shows "expired" instead of a live Approve.
+
+### 🎩 Polymarket: a maker test, off by default
+- **A maker test for Polymarket's liquidity rewards, off by default.** Shadow mode, the default, sends nothing and needs no wallet: it replays the real public tape with queue position, GTD orders and exit-priced inventory to measure what quoting would really earn.
+- **The shadow's reward model no longer depends on how late the public tape is**, and a stopped maker leaves nothing resting.
+- **"Cancel all" is a kill switch**: it pulls every order and disarms the maker until you arm it again. It and "Set approvals" answer again: a page variable was hiding the browser's confirm dialog.
+- **The maker only quotes markets the rewards programme still pays**, and drops the ones the paper farmer can no longer vouch for.
+
+---
+
 ## v5.9.37
 
 **v5.9.37 - The stuff takes a soul: a found weapon is its own, the forge, a market that settles in $WINDH, the Gale, the Gazette, and a mask over every destiny.**
