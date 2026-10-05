@@ -5,6 +5,28 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.41
+
+**v5.9.41 - Straight about $WINDH: a token page that says what is real, a dashboard tab that can no longer drown the server, and a calmer maker test.**
+
+### 🪙 $WINDH, said as it is
+- **A new $WINDH page** sets out the token's real status: not created yet, no contract address, no price, no launch date - what already works without it, and the gates a launch would have to pass.
+- **The site, the whitepaper and the in-app Wiki now call $WINDH a planned utility token, not deployed yet.** If anyone offers you $WINDH today, it is not Wind's.
+- **The whitepaper is refreshed**: a proposed allocation with no token sale, staking for perks only - no yield, no interest, no revenue share - and a roadmap gated on milestones, not dates. Wind Earn is dropped.
+- **Marketplace listings show the token they are really paid in** (USDT by default) and sample $WINDH prices are tagged demo. You always pay from your own wallet; ACCESS passes stay a one-time payment in SOL.
+
+### 🧠 A sleeping tab can no longer drown the server
+- **A frozen or sleeping dashboard tab can no longer make the server pile up live updates until the machine runs out of memory.** Each dashboard connection has a small send budget, dead connections are found by ping and closed, and the page reopens its live feed when the browser wakes it.
+- **Dashboard prices are batched** - at most four updates a second - and appear instantly on reconnect.
+
+### 🎩 Polymarket: a calmer maker test
+- **When one side of a market fills ahead of the other, that side now pauses much sooner**, so lopsided positions build up less; the side that's behind can use the market's whole remaining budget to even out, never past that market's slice. Paper mode by default.
+- **Paper mode replays its orders with the same sizing rule as the real loop**, including picking a paused side back up when a late fill shows it should have kept quoting.
+
+_Backend - effective at reboot. Frontend - hard refresh._
+
+---
+
 ## v5.9.40
 
 **v5.9.40 - A maker test that sizes itself: capital that follows the wallet, leftovers sold at a profit, and a safer pick of markets.**
@@ -1224,7 +1246,7 @@ _Backend changes land at reboot (self-host: re-pull + recreate the container). F
 - A **daily 24h performance report** ships every evening with a real PnL chart built from the canonical numbers — pinging only members who opted into the Live Trades role.
 
 ### 💠 $WINDH — the launch machine starts
-- **TGE date is public: January 5, 2027** — stamped on the whitepaper roadmap (Phase 8).
+- **TGE date is public** (date withdrawn — the launch is gated; see [/windh/](https://windhub.netlify.app/windh/)) — stamped on the whitepaper roadmap (Phase 8).
 - The token logo is now hosted on the site, /token answers with full media, and a **submission kit covering 38 verified calendar & listing sites** (TGE calendars, airdrop directories, Solana ecosystem) is ready with copy-paste answers.
 
 ### 📜 Release announces, polished
@@ -1382,7 +1404,7 @@ _Frontend + site only — hard-refresh after pulling the latest image._
 
 ### 🗺️ $WINDH roadmap, reloaded
 - The whitepaper roadmap (in-app + site) now runs **nine phases** with punchier storytelling — ending on a golden **Phase 9 · 🏁 Go-live: stable production**: the whole hub cruising on mainnet $WINDH.
-- New **"Beyond — where Wind is heading"** vision track: 💳 **Wind Card** (a card linked to your Wind Wallet — virtual cards, Apple Pay / Google Pay), 📱 **Wind on the stores** (native App Store + Google Play release) and 💎 **Wind Earn** (staking vaults + $WINDH cashback).
+- New **"Beyond — where Wind is heading"** vision track: 💳 **Wind Card** (a card linked to your Wind Wallet — virtual cards, Apple Pay / Google Pay), 📱 **Wind on the stores** (native App Store + Google Play release) and 💎 **Wind Earn** (staking vaults + $WINDH cashback) — since dropped: no yield or cashback (see [/windh/](https://windhub.netlify.app/windh/)).
 
 ### ✨ Site polish
 - The old three-step "how it works" block is retired — the new **Deploy** menu entry drops you straight on **"Trading is free."**, the pass carousel and the one-command install.
@@ -1707,6 +1729,8 @@ _Most of this is frontend (hard-refresh). The access gating, the Wind ACCESS see
 ## v4.0.0
 
 **v4.0.0 — $WINDH on Solana, a wallet that holds it, and an assistant that remembers you.** The Wind HUB token ($WINDH) arrives on Solana — the most active, lowest-fee chain — with a custodial Solana account built right into your Wind wallet, $WINDH checkout in the Marketplace, and an AI Trades Assistant that finally keeps your conversation history. Plus a broad design pass and far quieter logs.
+
+_(The token itself was never minted; the launch is gated — see [/windh/](https://windhub.netlify.app/windh/).)_
 
 ### ![Wind](/wind-logo.svg) $WINDH — the Wind HUB token (Solana)
 - **$WINDH launches on Solana** (SPL), chosen for the most active community and near-zero fees. A full tokenomics spec ships with it: fixed 100M supply, mint & freeze authorities revoked, with utility across licenses, the marketplace, staking and governance.
