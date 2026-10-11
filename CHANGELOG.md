@@ -5,6 +5,36 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.42
+
+**v5.9.42 - Wind runs only what you've activated: products without their pass stay off, the Token Sniper waits for your click, Stop Trading leaves your open trades in your hands, and the team hears at once if X stops posting.**
+
+### 🔐 Only what you've activated
+- **Products you haven't activated no longer start.** On an instance without its Wind ACCESS pass, the Whale radar, the Token Sniper, the NFT sniper and Degen don't run at all, and their start buttons are refused: fewer background calls, less memory. The trading engine itself is never behind a pass.
+- **A pass activated while Wind runs takes effect at once**: Degen starts scanning when you turn it on, no reboot needed.
+
+### 🎯 The Token Sniper waits for your click
+- **Off by default.** One "Activate Token Sniper" button turns the radar on and unfolds the page; it stays on across reboots until you press Stop.
+- **Held positions are never left alone.** If you still hold sniper positions, the radar comes back at boot to keep tracking them, and with the radar off the page still lists your positions with their Sell button.
+- **What you see is what is armed.** An armed Auto-Buy engine shows on the off page, with its switch, before you activate. A settings save from an old tab can no longer turn the radar back on.
+
+### 🛑 Stop means stop, and your trades stay in your hands
+- **Stop Trading now stops a DCA ladder mid-placement**, sweeps the order book again a few seconds later for an order that landed late, and cancels symbol by symbol when the book can't be read.
+- **Open trades stay visible and closable**: Positions, Risk and Home keep showing them with equity and unrealized, Close works, and the pages say plainly that trading is stopped - TP, DCA and projected liquidation are no longer shown as active, the liquidation guard is marked off, and Trim and Refill are greyed out with the reason.
+
+### 📣 Discord and X
+- **If X ever stops accepting Wind's posts, the team is pinged in Discord at once**, and told again the moment posting is back.
+- **$WINDH is described as it is on Discord too**: the /token reply and the pinned posts say planned, not created yet; dead links are fixed.
+- **Patch notes breathe**: long points get a blank line between them.
+
+### 🧰 Also
+- **Wind Arena now has its own version numbers**: the arena is at v1.0.0, the hub stays on v5.9.x.
+- **Windows desktop shortcuts with icons** for the master, the arena and each client instance, made by one script.
+
+_Backend - effective at reboot. Frontend - hard refresh._
+
+---
+
 ## v5.9.41
 
 **v5.9.41 - Straight about $WINDH: a token page that says what is real, a dashboard tab that can no longer drown the server, and a calmer maker test.**
@@ -85,7 +115,7 @@ _Wind Arena release - hard-refresh the arena to see the new drawings._
 **v5.9.37 - The stuff takes a soul: a found weapon is its own, the forge, a market that settles in $WINDH, the Gale, the Gazette, and a mask over every destiny.**
 
 ### ⚔️ A weapon is an instance
-- **Every weapon found on the sand is its own piece.** Roster v3 adds the affixes - Edge, Heft, Keen, Swift, True - and a found weapon carries up to two of them, each at a tier, rolled on the server from a nonce the client never sees. Four qualities: plain, fine, rare and storied; a storied one carries a name of its own, "Squall Saber of the Third Gust".
+- **Every weapon found on the sand is its own piece.** Roster v3 adds the affixes - Edge, Heft, Keen, Swift, True - and a found weapon carries up to two of them, each at a tier, rolled on the server from a nonce the client never sees. Four qualities: `plain`, `fine`, `rare` and `storied`; a storied one carries a name of its own, "Squall Saber of the Third Gust".
 - **Engine rules 0.6.0** read the roll: a fighter swings the rolled numbers. Every number of 0.5.0 is untouched and no die is added, so a fighter carrying plain weapons resolves exactly as it did - the 500-bout golden of 0.4.0 passes unchanged under 0.6.0, and a second golden covers 500 bouts with a roll on every blade. Edge and Heft are proportional to the weapon's own band: a flat bonus was worth ×2.3 on a dagger and ×1.3 on a maul, so the balance test now caps a fully rolled weapon at a quarter over its plain base. A sidegrade with texture, never a new tier.
 - **The roll travels with the spec.** One canonical string per weapon joins the fighter's canonical form (thirteen keys now), so a bout snapshot replays what was swung whatever became of the piece since.
 - **A won bout can leave a weapon on the sand** - two finds a day at most - and the contract chest, the Trials and the Gale drop them too. A level-up weapon card mints a plain instance.
@@ -826,7 +856,7 @@ _Master-only. Backend - effective at reboot._
 
 ### ⚔️ From a duel to a career
 - v5.6.0 shipped the foundation - a deterministic engine and a battle scene. This turns it into something you come back to: levels and rewards after every bout, wounds that need resting off, a collection to fill, and a reason to fight tomorrow.
-- **The Storm's Path** - a Brawler's entire future is rolled the moment it is named, derived from its seed and never stored, so it cannot be re-rolled. Anyone holding the seed can read what a Brawler will become, which is what makes one worth buying.
+- **The Storm's Path** - a Brawler's entire future is rolled the moment it is named, derived from its seed and never stored, so it cannot be re-rolled. Anyone holding the seed can read what a Brawler will become, so its future can be read before it is ever chosen.
 
 ### 🏛️ The Cell
 - Six rooms: your Brawler and its attributes, the arena, trials, squadron wars, apprentices and the shop. Your collection shows the silhouette of what you have **not** earned yet, and every past bout is replayable from its seed.
@@ -2591,7 +2621,7 @@ Each with REST connector + WebSocket + Private WebSocket.
 ---
 
 ### AsGrid DCA Fixes
-Client-reported: "layers en trop consommés et mal placés"
+Client-reported: "extra layers consumed and misplaced"
 
 - **Smart Skip** — refreshDCA() no longer cancels/re-places 30 DCA every 15min. Skips if config unchanged + entry drift < 2%. Reduces API calls ~90%.
 - **Exchange Verify** — Queries open orders before placement, cancels orphan DCA from partial cancel failures.
