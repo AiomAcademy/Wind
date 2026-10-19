@@ -5,6 +5,21 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.43
+
+**v5.9.43 - A stopped instance stays up: the daily trade check no longer takes down an instance whose trading is stopped.**
+
+### 🛡️ Stopped means stable
+- **An instance with trading stopped no longer crashes a day later.** Wind checks its trades against the exchange once a day; after Stop Trading that check could fire on a stopped engine and take the whole instance down. It now sees that trading is stopped and waits.
+
+### 🧰 Also
+- **The self-hosted backup bundle copies the arena's player database consistently**, latest moves included.
+- **Announcement and moderation tools** were tightened for the team.
+
+_Backend - effective at reboot. Frontend - hard refresh._
+
+---
+
 ## v5.9.42
 
 **v5.9.42 - Wind runs only what you've activated: products without their pass stay off, the Token Sniper waits for your click, Stop Trading leaves your open trades in your hands, and the team hears at once if X stops posting.**
@@ -75,7 +90,7 @@ _Backend - effective at reboot. Frontend - hard refresh._
 **v5.9.39 - Redrawn from the sand up: every champion inked again, your name still your fate, and a flask you can see.**
 
 ### 🎨 Every champion, redrawn
-- **Every fighter of Wind Arena has been drawn again from the sand up**: jointed limbs, inked outlines, hard desert shadows. Inspired by La Brute.
+- **Every fighter of Wind Arena has been drawn again from the sand up**: jointed limbs, inked outlines, hard desert shadows.
 - **Your name is still your fate.** The same name always forges the same fighter - hair, eyes, beard, scars, masks and helms, all read from its letters.
 - **The Legends wear their own canonical looks**, so the crown's holders are known on sight.
 
@@ -155,7 +170,7 @@ _Wind Arena release - hard-refresh the arena to see the new drawings._
 - **The mark is the sword alone**: the bolt-bladed sword and the storm sun on the ember, with no lines across it - on the icon, the seal, the share card, and the battle sky, which no longer draws wind streaks.
 - **Wind Arena has its own Discord**: the Gazette and the Gale post there every morning, the patch notes wear the arena's seal, and the rules of the sand are pinned at the gate.
 
-_Public arena - rebuilt at reboot. Sidecar - effective at reboot (schema 13 → 17 migrates on boot; every legacy weapon becomes a plain instance). Backend - effective at reboot. Frontend - hard refresh. Engine 273 tests, sidecar 281, render 62, backend 989. Wind Arena is inspired by La Brute (Motion Twin, 2008); engine, rules, fighters and art are original._
+_Public arena - rebuilt at reboot. Sidecar - effective at reboot (schema 13 → 17 migrates on boot; every legacy weapon becomes a plain instance). Backend - effective at reboot. Frontend - hard refresh. Engine 273 tests, sidecar 281, render 62, backend 989. Wind Arena is built by OneTricky; engine, rules, fighters and art are original._
 
 ---
 
