@@ -5,6 +5,17 @@ see inside Wind, so this never drifts from the product.
 
 ---
 
+## v5.9.44
+
+**v5.9.44 - Steady through a lost connection: the price stream reconnects calmly instead of piling up its retries.**
+
+### 🛡️ Steady through a lost connection
+- **A lost internet connection can no longer make Wind run out of memory**: the Catalyst price stream now reconnects calmly, with a growing pause, instead of multiplying its retries.
+
+_Backend - effective at reboot._
+
+---
+
 ## v5.9.43
 
 **v5.9.43 - A stopped instance stays up: the daily trade check no longer takes down an instance whose trading is stopped.**
@@ -356,7 +367,7 @@ _Frontend - hard-refresh. The Cell's drawing is still small on a phone; a tall c
 - **The contract of the day**: three goals from a pool of fifteen, the same three for everyone, drawn from the day; a house of the day; a chest when all three are met. Shipped as engine rules here; the page that shows them lands in the next version.
 
 ### 🧰 Tooling
-- **Wind Admin Portable** (operator-only, never committed): one command, node scripts/make-portable.mjs, packs the whole running master - tree, node_modules, consistent DB snapshots, secrets, the runtime and Claude's memory - under 2 GB, as step 12 of every checkpoint.
+- **Wind Admin Portable** (operator-only, never committed): one command, node scripts/make-portable.mjs, packs the whole running master - tree, node_modules, consistent DB snapshots, secrets, the runtime and the operator's notes - under 2 GB, as step 12 of every checkpoint.
 
 _Sidecar - effective at reboot. Engine mirror in sync; engine +10 tests, sidecar +7._
 
